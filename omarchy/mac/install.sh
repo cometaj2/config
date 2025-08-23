@@ -26,3 +26,6 @@ yes | yay -S mbpfan
 sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
 sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
+
+# Steam Don't Starve Together xwayland advanced configuration add the following configuration to DST's launch
+# SDL_VIDEODRIVER=x11
