@@ -1,5 +1,6 @@
 # Miscellaneous but useful
 export LC_COLLATE=C
+alias vi="vim"
 alias sed="gsed"
 alias ls="gls --color"
 alias sl="ls"
