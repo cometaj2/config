@@ -1,0 +1,22 @@
+[alias]
+        co = checkout
+        ci = commit
+        st = status
+        br = branch
+        cob = branch -b
+        wip = !git add -A && git commit -m "WIP"
+        er = !git fetch && git merge --ff-only
+        up = "!git remote update -p; git merge --ff-only @{u}"
+[merge]
+        stat = true
+        ff = false
+[core]
+        editor = /usr/bin/vim
+        autocrlf = false
+[push]
+        default = simple
+[filter "lfs"]
+        process = git-lfs filter-process
+        required = true
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
