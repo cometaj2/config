@@ -1,8 +1,9 @@
 # Miscellaneous but useful
 export LC_COLLATE=C
 alias vi="vim"
-alias sed="gsed"
-alias ls="gls --color"
+#alias sed="gsed"
+#alias ls="gls --color"
+alias ls="ls --color"
 alias sl="ls"
 alias ll="ls -l"
 alias la="ls -la"
@@ -73,12 +74,12 @@ export USE_PYTORCH_METAL=1
 
 # huckle and hai setup
 eval $(huckle env)
-source ~/.openai
-source ~/.anthropic
+#source ~/.openai
+#source ~/.anthropic
 
 ## fzf bindings
-source /opt/homebrew/Cellar/fzf/*/shell/completion.bash
-source /opt/homebrew/Cellar/fzf/*/shell/key-bindings.bash
+#source /opt/homebrew/Cellar/fzf/*/shell/completion.bash
+#source /opt/homebrew/Cellar/fzf/*/shell/key-bindings.bash
 
 _fzf_comprun() {
   local command=$1
@@ -107,4 +108,4 @@ hai() {
   fi
 }
 
-source ~/.spacetraders
+#source ~/.spacetraders

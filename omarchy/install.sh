@@ -1,0 +1,23 @@
+# Python baseline venv configuration
+python -m venv ~/.venv
+source ~/.venv/bin/activate
+pip install huckle
+
+# Vim vundle installation for plugin management
+mkdir -p ~/.vim/bundle
+git clone https://github.com/VundleVim/vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# Baseline terminal configuration
+cp ../.bash_profile ~
+cp ../.vimrc ~
+cp ../.gitconfig ~
+
+source ~/.bash_profile
+
+# Removal of chromium and wayland configuration, which causes
+#HYPRLAND_BINDINGS="~/.config/hypr/bindings.conf
+
+yes | yay -R chromium
+yes | yay -S brave-bin
+yes | yay -S keeper-password-manager
+
