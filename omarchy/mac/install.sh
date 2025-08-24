@@ -1,24 +1,33 @@
-########## ########## ########## ########## ##########
-########## Python
+# =============================================================================
+# Python
+# =============================================================================
+# Baseline venv configuration
+#
+# =============================================================================
 
-# Python baseline venv configuration
 python -m venv ~/.venv
 source ~/.venv/bin/activate
 pip install huckle
 
-########## ########## ########## ########## ##########
-########## Vim
-
+# =============================================================================
+# Vim
+# =============================================================================
 # Vim vundle installation for plugin management
+#
+# =============================================================================
+
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-########## ########## ########## ########## ##########
-########## Terminal
-
-# Baseline terminal configuration
-cp ../../.bash_profile ~
 cp ../../.vimrc ~
+
+# =============================================================================
+# Terminal
+# =============================================================================
+# Baseline terminal configuration for development
+#
+# =============================================================================
+
+cp ../../.bash_profile ~
 cp ../../.gitconfig ~
 
 # we update .bashrc to load the .bash_profile
@@ -33,19 +42,28 @@ fi
 
 source ~/.bash_profile
 
-########## ########## ########## ########## ##########
-########## Wifi
+# =============================================================================
+# WiFi
+# =============================================================================
+# Broadcom based WiFi on Macs
+#
+# =============================================================================
 
 sudo rmmod b43
 sudo rmmod bcma
 sudo rmmod wl
 yes | yay -S broadcom-wl
 sudo modprobe wl
-echo "hint: iwctl device list"
-echo "hint: iwctl station wlan0 connect <network>"
 
-########## ########## ########## ########## ##########
-########## Apps
+# =============================================================================
+# Apps
+# =============================================================================
+# Removal of ozone-platform wayland flag, which causes glitches and replace chromium for brave.
+# HYPRLAND_BINDINGS="~/.config/hypr/bindings.conf
+#
+# mbp fan configuration is setup to help manage mac fan speed
+#
+# =============================================================================
 
 yes | yay -R chromium
 yes | yay -R lazygit
@@ -55,19 +73,30 @@ yes | yay -R lazydocker-bin-debug
 yes | yay -S brave-bin
 yes | yay -S keeper-password-manager
 
-# mbp fan configuration to help better manage mac fan speed
 yes | yay -S mbpfan
 sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
 sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
 
-# Removal of ozone-platform wayland flag, which causes glitches
-# Replace chromium for brave.
-# Replace 1password for keeperpasswordmanager
-sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
+# =============================================================================
+# GPU switching
+# =============================================================================
+# GPU switching app for MacBook Pro with hybrid graphics (e.g. MacBook Pro 9,1 2012 with integrated intel/NVIDIAi graphics).
+#
+# =============================================================================
 
-########## ########## ########## ########## ##########
-########## Steam
+# -i switches the integrated card on and the dedicated card off (better battery life)
+# -d switches the dedicated card on and the integrated card off (better performance). This fails.
+# Requires a reboot after running the desired command for it to take effect.
+yes | yay -S gpu-switch
+#sudo gpu-switch -i
+#sudo gpu-switch -d
 
-# Steam Don't Starve Together xwayland advanced configuration add the following configuration to DST's launch
+# =============================================================================
+# Steam
+# =============================================================================
+# Steam Don't Starve Together xwayland advanced configuration. Add the following configuration to DST's launch parameters
 # SDL_VIDEODRIVER=x11
+#
+# =============================================================================
+
