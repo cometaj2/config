@@ -34,10 +34,18 @@ fi
 source ~/.bash_profile
 
 ########## ########## ########## ########## ##########
-########## Apps
+########## Wifi
 
-# Removal of ozone-platform wayland flag, which causes glitches and replace chromium for brave.
-#HYPRLAND_BINDINGS="~/.config/hypr/bindings.conf
+sudo rmmod b43
+sudo rmmod bcma
+sudo rmmod wl
+yes | yay -S broadcom-wl
+sudo modprobe wl
+echo "hint: iwctl device list"
+echo "hint: iwctl station wlan0 connect <network>"
+
+########## ########## ########## ########## ##########
+########## Apps
 
 yes | yay -R chromium
 yes | yay -R lazygit
@@ -47,11 +55,16 @@ yes | yay -R lazydocker-bin-debug
 yes | yay -S brave-bin
 yes | yay -S keeper-password-manager
 
-# mbp fan configuration to help manage mac fan speed
+# mbp fan configuration to help better manage mac fan speed
 yes | yay -S mbpfan
 sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
 sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
+
+# Removal of ozone-platform wayland flag, which causes glitches
+# Replace chromium for brave.
+# Replace 1password for keeperpasswordmanager
+sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
 
 ########## ########## ########## ########## ##########
 ########## Steam
