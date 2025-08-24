@@ -105,7 +105,7 @@ yes | yay -S gpu-switch
 # # env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 #
 # Steam Don't Starve Together xwayland advanced configuration. Add the following configuration to DST's launch parameters
-# SDL_VIDEODRIVER=x11
+# SDL_VIDEODRIVER=x11 %command%
 #
 # =============================================================================
 
