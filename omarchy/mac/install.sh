@@ -95,6 +95,15 @@ yes | yay -S gpu-switch
 # =============================================================================
 # Steam
 # =============================================================================
+# If Steam seems to be running in the background but doesn't present a graphical interface, consider the following:
+# For MacBook Pro 9,1 2012, with the integrated graphics card enabled, nvidia hyprland env parameters should be commented out and the machine rebooted.
+#
+# ~/.config/hypr/hyprland.conf
+# # NVIDIA environment variables
+# # env = NVD_BACKEND,direct
+# # env = LIBVA_DRIVER_NAME,nvidia
+# # env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+#
 # Steam Don't Starve Together xwayland advanced configuration. Add the following configuration to DST's launch parameters
 # SDL_VIDEODRIVER=x11
 #
