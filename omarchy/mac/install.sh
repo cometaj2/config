@@ -25,12 +25,13 @@ cp ../../.vimrc ~
 # =============================================================================
 # Baseline terminal configuration for development
 #
+# We update .bashrc to load the .bash_profile
+#
 # =============================================================================
 
 cp ../../.bash_profile ~
 cp ../../.gitconfig ~
 
-# we update .bashrc to load the .bash_profile
 LINE_TO_ADD='source ~/.bash_profile'
 BASHRC_FILE="$HOME/.bashrc"
 if ! grep -qF "$LINE_TO_ADD" "$BASHRC_FILE"; then
@@ -51,9 +52,10 @@ source ~/.bash_profile
 
 sudo rmmod b43
 sudo rmmod bcma
-sudo rmmod wl
 yes | yay -S broadcom-wl
 sudo modprobe wl
+echo "hint: iwctl device list"
+echo "hint: iwctl station wlan0 connect <network>"
 
 # =============================================================================
 # Apps
@@ -62,6 +64,8 @@ sudo modprobe wl
 # HYPRLAND_BINDINGS="~/.config/hypr/bindings.conf
 #
 # mbp fan configuration is setup to help manage mac fan speed
+#
+# bindings.conf configuration is setup to cleanup key bindings and to allow remap
 #
 # =============================================================================
 
@@ -72,11 +76,14 @@ yes | yay -R lazydocker-bin
 yes | yay -R lazydocker-bin-debug
 yes | yay -S brave-bin
 yes | yay -S keeper-password-manager
+yes | yay -S bottles
 
 yes | yay -S mbpfan
 sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
 sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
+
+sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
 
 # =============================================================================
 # GPU switching
