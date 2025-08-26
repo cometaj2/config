@@ -50,9 +50,9 @@ source ~/.bash_profile
 #
 # =============================================================================
 
-sudo rmmod b43
-sudo rmmod bcma
-yes | yay -S broadcom-wl
+sudo rmmod b43 2>/dev/null
+sudo rmmod bcma 2>/dev/null
+yes | yay -S --needed broadcom-wl
 sudo modprobe wl
 echo "hint: iwctl device list"
 echo "hint: iwctl station wlan0 connect <network>"
@@ -66,24 +66,27 @@ echo "hint: iwctl station wlan0 connect <network>"
 # mbp fan configuration is setup to help manage mac fan speed
 #
 # bindings.conf configuration is setup to cleanup key bindings and to allow remap
+# alacritty.toml configuration for oldschool 8x16 terminal font
 #
 # =============================================================================
 
-yes | yay -R chromium
-yes | yay -R lazygit
-yes | yay -R neovim
-yes | yay -R lazydocker-bin
-yes | yay -R lazydocker-bin-debug
-yes | yay -S brave-bin
-yes | yay -S keeper-password-manager
-yes | yay -S bottles
+yes | yay -Rns chromium 2>/dev/null
+yes | yay -Rns lazygit 2>/dev/null
+yes | yay -Rns neovim 2>/dev/null
+yes | yay -Rns lazydocker-bin 2>/dev/null
+yes | yay -Rns lazydocker-bin-debug 2>/dev/null
+yes | yay -S --needed brave-bin
+yes | yay -S --needed keeper-password-manager
+yes | yay -S --needed bottles
+yes | yay -S --needed oldschool-pc-fonts
 
-yes | yay -S mbpfan
+yes | yay -S --needed mbpfan
 sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
 sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
 
 sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
+sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 # =============================================================================
 # GPU switching
@@ -95,7 +98,7 @@ sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
 # -i switches the integrated card on and the dedicated card off (better battery life)
 # -d switches the dedicated card on and the integrated card off (better performance). This fails.
 # Requires a reboot after running the desired command for it to take effect.
-yes | yay -S gpu-switch
+yes | yay -S --needed gpu-switch
 #sudo gpu-switch -i
 #sudo gpu-switch -d
 

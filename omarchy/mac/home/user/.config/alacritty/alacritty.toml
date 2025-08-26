@@ -1,0 +1,26 @@
+general.import = [ "~/.config/omarchy/current/theme/alacritty.toml" ]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+normal = { family = "PxPlus IBM VGA 8x16", style = "Regular" }
+bold = { family = "PxPlus IBM VGA 8x16", style = "Regular" }
+italic = { family = "PxPlus IBM VGA 8x16", style = "Regular" }
+offset = { x = 0, y = -2 } # Adjust 'y' for line spacing
+#normal = { family = "CaskaydiaMono Nerd Font", style = "Regular" }
+#bold = { family = "CaskaydiaMono Nerd Font", style = "Bold" }
+#italic = { family = "CaskaydiaMono Nerd Font", style = "Italic" }
+size = 17
+
+[window]
+padding.x = 14
+padding.y = 14
+decorations = "None"
+opacity = 1
+
+[keyboard]
+bindings = [
+{ key = "F11", action = "ToggleFullscreen" }
+]
+
