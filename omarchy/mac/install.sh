@@ -18,7 +18,7 @@ pip install huckle
 
 mkdir -p ~/.vim/bundle
 git clone https://github.com/VundleVim/vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp ../../.vimrc ~
+cp ./home/user/.vimrc ~
 
 # =============================================================================
 # Terminal
@@ -29,9 +29,11 @@ cp ../../.vimrc ~
 #
 # =============================================================================
 
-cp ../../.bash_profile ~
-cp ../../.gitconfig ~
+cp ./home/user/.bash_profile ~
+cp ./home/user/.gitconfig ~
 
+rm ~/.bashrc
+touch ~/.bashrc
 LINE_TO_ADD='source ~/.bash_profile'
 BASHRC_FILE="$HOME/.bashrc"
 if ! grep -qF "$LINE_TO_ADD" "$BASHRC_FILE"; then
@@ -48,6 +50,8 @@ source ~/.bash_profile
 # =============================================================================
 # Broadcom based WiFi on Macs
 #
+# A reboot may be required after removing modules and setting up wl
+#
 # =============================================================================
 
 sudo rmmod b43 2>/dev/null
@@ -60,8 +64,7 @@ echo "hint: iwctl station wlan0 connect <network>"
 # =============================================================================
 # Apps
 # =============================================================================
-# Removal of ozone-platform wayland flag, which causes glitches and replace chromium for brave.
-# HYPRLAND_BINDINGS="~/.config/hypr/bindings.conf
+# Removal of ozone-platform wayland flags which cause glitches in the tile.
 #
 # mbp fan configuration is setup to help manage mac fan speed
 #
@@ -75,10 +78,12 @@ yes | yay -Rns lazygit 2>/dev/null
 yes | yay -Rns neovim 2>/dev/null
 yes | yay -Rns lazydocker-bin 2>/dev/null
 yes | yay -Rns lazydocker-bin-debug 2>/dev/null
+yes | yay -S --needed vim
 yes | yay -S --needed brave-bin
 yes | yay -S --needed keeper-password-manager
 yes | yay -S --needed bottles
 yes | yay -S --needed oldschool-pc-fonts
+yes | yay -S --needed balena-etcher
 
 yes | yay -S --needed mbpfan
 sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
@@ -87,17 +92,19 @@ sudo systemctl start mbpfan
 
 sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
 sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+sudo cp ./home/user/.config/brave-flags.conf ~/.config/brave-flags.conf
 
 # =============================================================================
 # GPU switching
 # =============================================================================
-# GPU switching app for MacBook Pro with hybrid graphics (e.g. MacBook Pro 9,1 2012 with integrated intel/NVIDIAi graphics).
+# GPU switching app for MacBook Pro with hybrid graphics (e.g. MacBook Pro 9,1 2012 with integrated intel/NVIDIA graphics).
 #
-# =============================================================================
-
 # -i switches the integrated card on and the dedicated card off (better battery life)
 # -d switches the dedicated card on and the integrated card off (better performance). This fails.
 # Requires a reboot after running the desired command for it to take effect.
+#
+# =============================================================================
+
 yes | yay -S --needed gpu-switch
 #sudo gpu-switch -i
 #sudo gpu-switch -d
