@@ -64,7 +64,7 @@ echo "hint: iwctl station wlan0 connect <network>"
 # =============================================================================
 # Apps
 # =============================================================================
-# Removal of ozone-platform wayland flags which cause glitches in the tile.
+# Removal of ozone-platform wayland flags which cause glitches in tiles; for both chromium and brave.
 #
 # mbp fan configuration is setup to help manage mac fan speed
 #
@@ -93,6 +93,7 @@ sudo systemctl start mbpfan
 sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
 sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 sudo cp ./home/user/.config/brave-flags.conf ~/.config/brave-flags.conf
+sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 
 # =============================================================================
 # GPU switching
