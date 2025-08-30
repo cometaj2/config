@@ -73,12 +73,10 @@ echo "hint: iwctl station wlan0 connect <network>"
 #
 # =============================================================================
 
-yes | yay -Rns chromium 2>/dev/null
-yes | yay -Rns lazygit 2>/dev/null
-yes | yay -Rns neovim 2>/dev/null
-yes | yay -Rns lazydocker-bin 2>/dev/null
-yes | yay -Rns lazydocker-bin-debug 2>/dev/null
-yes | yay -Rns 1password 2>/dev/null
+yay -Qs lazygit | grep local | xargs | awk '{print $1 " " $3}' | xargs yay -Rns 2>/dev/null
+yay -Qs neovim | grep local | xargs | awk '{print $1 " " $3}' | xargs yay -Rns 2>/dev/null
+yay -Qs lazydocker | grep local | xargs | awk '{print $1 " " $3}' | xargs yay -Rns 2>/dev/null
+yay -Qs 1password | grep local | xargs | awk '{print $1 " " $3}' | xargs yay -Rns 2>/dev/null
 yes | yay -S --needed vim
 yes | yay -S --needed brave-bin
 yes | yay -S --needed keeper-password-manager
