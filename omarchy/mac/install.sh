@@ -1,4 +1,14 @@
 # =============================================================================
+# Terminal
+# =============================================================================
+# alacritty.toml configuration for oldschool 8x16 terminal font
+#
+# =============================================================================
+
+yes | yay -S --needed oldschool-pc-fonts
+sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
+
+# =============================================================================
 # Python
 # =============================================================================
 # Baseline venv configuration
@@ -69,19 +79,16 @@ echo "hint: iwctl station wlan0 connect <network>"
 # mbp fan configuration is setup to help manage mac fan speed
 #
 # bindings.conf configuration is setup to cleanup key bindings and to allow remap
-# alacritty.toml configuration for oldschool 8x16 terminal font
 #
 # =============================================================================
 
-yay -Qs lazygit | grep local | xargs | awk '{print $1 " " $3}' | xargs yay -Rns 2>/dev/null
-yay -Qs neovim | grep local | xargs | awk '{print $1 " " $3}' | xargs yay -Rns 2>/dev/null
-yay -Qs lazydocker | grep local | xargs | awk '{print $1 " " $3}' | xargs yay -Rns 2>/dev/null
-yay -Qs 1password | grep local | xargs | awk '{print $1 " " $3}' | xargs yay -Rns 2>/dev/null
+yay -Qs lazygit | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
+yay -Qs neovim | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
+yay -Qs lazydocker | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
+yay -Qs 1password | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
 yes | yay -S --needed vim
 yes | yay -S --needed brave-bin
 yes | yay -S --needed keeper-password-manager
-yes | yay -S --needed bottles
-yes | yay -S --needed oldschool-pc-fonts
 yes | yay -S --needed balena-etcher
 
 yes | yay -S --needed mbpfan
@@ -90,7 +97,6 @@ sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
 
 sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
-sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 sudo cp ./home/user/.config/brave-flags.conf ~/.config/brave-flags.conf
 sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 
@@ -116,6 +122,7 @@ yes | yay -S --needed gpu-switch
 GRAPHICS=$(lspci -d ::03xx)
 case "$GRAPHICS" in 
     *'[AMD/ATI] Pitcairn PRO [Radeon HD 7850 / R7 265 / R9 270 1024SP]'*)
+        echo ""
         echo "Found: $GRAPHICS"
         echo "Cleaning up after steam..."
         yes | yay -Rns lib32-amdvlk 2>/dev/null
@@ -127,15 +134,18 @@ case "$GRAPHICS" in
         echo "hint: vulkaninfo"
         echo "hint: vkcube"
         echo "hint: glxgears"
+        echo ""
 
         sudo cp ./etc/modprobe.d/amdgpu.conf /etc/modprobe.d/amdgpu.conf
         sudo cp ./etc/modprobe.d/radeon.conf /etc/modprobe.d/radeon.conf
 
-        sudo mkinitcpio -P
+        yes | sudo mkinitcpio -P
         echo "hint: reboot!"
         ;;
     *)
+        echo ""
         echo "Ignoring: $GRAPHICS"
+        echo ""
         ;;
 esac
 
