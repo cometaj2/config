@@ -97,7 +97,7 @@ sudo cp ./home/user/.config/brave-flags.conf ~/.config/brave-flags.conf
 sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 
 # =============================================================================
-# GPU switching
+# Graphics Configuration
 # =============================================================================
 # GPU switching app for MacBook Pro with hybrid graphics (e.g. MacBook Pro 9,1 2012 with integrated intel/NVIDIA graphics).
 #
@@ -105,11 +105,36 @@ sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 # -d switches the dedicated card on and the integrated card off (better performance). This fails.
 # Requires a reboot after running the desired command for it to take effect.
 #
+# iMac 2015 with AMD Radeon HD7850 Vulkan Configuration https://bbs.archlinux.org/viewtopic.php?id=299630
+# mesa and vulkan-radeon supports it. amdvlk will cause conflict if installed.
+#
+#
 # =============================================================================
 
 yes | yay -S --needed gpu-switch
 #sudo gpu-switch -i
 #sudo gpu-switch -d
+
+GRAPHICS=$(lspci -d ::03xx)
+case "$GRAPHICS" in 
+    *'[AMD/ATI] Pitcairn PRO [Radeon HD 7850 / R7 265 / R9 270 1024SP]'*)
+        echo "Found: $GRAPHICS"
+        yes | yay -Rns lib32-amdvlk 2>/dev/null
+        yes | yay -Rns amdvlk 2>/dev/null
+        yes | yay -S --needed vulkan-tools
+        echo "hint: vulkaninfo"
+        echo "hint: vkcube"
+        echo "hint: glxgears"
+
+        sudo cp ./etc/modprobe.d/amdgpu.conf /etc/amdgpu.conf
+        sudo cp ./etc/modprobe.d/radeon.conf /etc/radeon.conf
+
+        sudo mkinitcpio -P
+        ;;
+    *)
+        echo "Ignoring: $GRAPHICS"
+        ;;
+esac
 
 # =============================================================================
 # Steam
