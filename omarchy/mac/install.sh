@@ -119,17 +119,22 @@ GRAPHICS=$(lspci -d ::03xx)
 case "$GRAPHICS" in 
     *'[AMD/ATI] Pitcairn PRO [Radeon HD 7850 / R7 265 / R9 270 1024SP]'*)
         echo "Found: $GRAPHICS"
+        echo "Cleaning up after steam..."
         yes | yay -Rns lib32-amdvlk 2>/dev/null
         yes | yay -Rns amdvlk 2>/dev/null
+        yes | yay -S --needed lib32-vulkan-radeon
+        yes | yay -S --needed vulkan-radeon
+        yes | yay -S --needed mesa-utils
         yes | yay -S --needed vulkan-tools
         echo "hint: vulkaninfo"
         echo "hint: vkcube"
         echo "hint: glxgears"
 
-        sudo cp ./etc/modprobe.d/amdgpu.conf /etc/amdgpu.conf
-        sudo cp ./etc/modprobe.d/radeon.conf /etc/radeon.conf
+        sudo cp ./etc/modprobe.d/amdgpu.conf /etc/modprobe.d/amdgpu.conf
+        sudo cp ./etc/modprobe.d/radeon.conf /etc/modprobe.d/radeon.conf
 
         sudo mkinitcpio -P
+        echo "hint: reboot!"
         ;;
     *)
         echo "Ignoring: $GRAPHICS"
