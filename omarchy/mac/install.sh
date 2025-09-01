@@ -142,6 +142,7 @@ case "$GRAPHICS" in
         echo "Found: $GRAPHICS"
         echo "$GRAPHICS"
         echo "Cleaning up after arch baseline..."
+        echo ""
 
         yes | yay -Rns lib32-amdvlk 2>/dev/null
         yes | yay -Rns amdvlk 2>/dev/null
@@ -164,19 +165,21 @@ case "$GRAPHICS" in
         echo "Found:"
         echo "$GRAPHICS"
         echo "Cleaning up after arch baseline..."
+        echo ""
 
         yay -Rdd --noconfirm nvidia-dkms 2>/dev/null
-        yay -Rdd --noconfirm mesa 2>/dev/null
         yay -Rdd --noconfirm lib32-nvidia-utils 2>/dev/null
-        yay -Rdd --noconfirm nvidia-utils 2>/dev/null
+#        yay -Rdd --noconfirm mesa 2>/dev/null
+#        yay -Rdd --noconfirm nvidia-utils 2>/dev/null
         yes | yay -S --needed nvidia-470xx-dkms
-        yes | yay -S --needed nvidia-470xx-utils
+#        yes | yay -S --needed nvidia-470xx-utils
         yes | yay -S --needed lib32-nvidia-470xx-utils
         yes | yay -S --needed vulkan-tools
-        sudo cp ./etc/modprobe.d/nvidia.conf /etc/modprobe.d/nvidia.conf
+        yes | yay -S --needed mesa-utils
+        sudo cp ./etc/modprobe.d/nvidia_drm.conf /etc/modprobe.d/nvidia_drm.conf
 
         yes | yay -S --needed gpu-switch
-        #sudo gpu-switch -i
+        sudo gpu-switch -i
         #sudo gpu-switch -d
 
         yes | sudo mkinitcpio -P
