@@ -125,16 +125,6 @@ yes | yay -S --needed inxi
 inxi -Gxxxz
 echo ""
 
-#yay -Rdd lib32-mesa
-#yay -Rdd glu
-#yay -Qs mesa | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
-#yay -Qs nvidia-dkms | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
-#yay -S --needed nvidia-740xx-dkms
-#yay -S --needed nvidia-470xx-utils
-#yay -S --needed lib32-nvidia-470xx-utils
-#yay -S --needed mesa-utils # for glxinfo
-#sudo cp ./etc/modprobe.d/nvidia_drm.conf /etc/modprobe.d/nvidia_drm.conf
-
 GRAPHICS=$(lspci -d ::03xx)
 case "$GRAPHICS" in 
     *'[AMD/ATI] Pitcairn PRO [Radeon HD 7850 / R7 265 / R9 270 1024SP]'*)
