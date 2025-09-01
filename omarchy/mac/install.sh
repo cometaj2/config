@@ -89,7 +89,7 @@ yay -Qs 1password | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noco
 yes | yay -S --needed vim
 yes | yay -S --needed brave-bin
 yes | yay -S --needed keeper-password-manager
-yes | yay -S --needed balena-etcher
+# yes | yay -S --needed balena-etcher
 
 yes | yay -S --needed mbpfan
 sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
@@ -118,9 +118,6 @@ sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 #
 # =============================================================================
 
-yes | yay -S --needed gpu-switch
-#sudo gpu-switch -i
-#sudo gpu-switch -d
 
 # Graphics card activation display id and monitor information
 echo ""
@@ -128,8 +125,6 @@ yes | yay -S --needed inxi
 inxi -Gxxxz
 echo ""
 
-#yay -Rdd nvidia-dkms
-#yay -Rdd mesa
 #yay -Rdd lib32-mesa
 #yay -Rdd glu
 #yay -Qs mesa | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
@@ -137,7 +132,6 @@ echo ""
 #yay -S --needed nvidia-740xx-dkms
 #yay -S --needed nvidia-470xx-utils
 #yay -S --needed lib32-nvidia-470xx-utils
-#yay -S --needed nvidia-470xx-utils
 #yay -S --needed mesa-utils # for glxinfo
 #sudo cp ./etc/modprobe.d/nvidia_drm.conf /etc/modprobe.d/nvidia_drm.conf
 
@@ -147,7 +141,8 @@ case "$GRAPHICS" in
         echo ""
         echo "Found: $GRAPHICS"
         echo "$GRAPHICS"
-        echo "Cleaning up after steam..."
+        echo "Cleaning up after arch baseline..."
+
         yes | yay -Rns lib32-amdvlk 2>/dev/null
         yes | yay -Rns amdvlk 2>/dev/null
         yes | yay -S --needed lib32-vulkan-radeon
@@ -165,9 +160,31 @@ case "$GRAPHICS" in
         yes | sudo mkinitcpio -P
         echo "hint: reboot!"
         ;;
+    *'Intel Corporation 3rd Gen Core processor Graphics Controller (rev 09)'*|*'NVIDIA Corporation GK107M [GeForce GT 650M Mac Edition] (rev a1)'*)
+        echo "Found:"
+        echo "$GRAPHICS"
+        echo "Cleaning up after arch baseline..."
+
+        yay -Rdd --noconfirm nvidia-dkms 2>/dev/null
+        yay -Rdd --noconfirm mesa 2>/dev/null
+        yay -Rdd --noconfirm lib32-nvidia-utils 2>/dev/null
+        yay -Rdd --noconfirm nvidia-utils 2>/dev/null
+        yes | yay -S --needed nvidia-470xx-dkms
+        yes | yay -S --needed nvidia-470xx-utils
+        yes | yay -S --needed lib32-nvidia-470xx-utils
+        yes | yay -S --needed vulkan-tools
+        sudo cp ./etc/modprobe.d/nvidia.conf /etc/modprobe.d/nvidia.conf
+
+        yes | yay -S --needed gpu-switch
+        #sudo gpu-switch -i
+        #sudo gpu-switch -d
+
+        yes | sudo mkinitcpio -P
+        echo "hint: reboot!"
+        ;;
     *)
         echo ""
-        echo "Ignoring: $GRAPHICS"
+        echo "Ignoring:"
         echo "$GRAPHICS"
         echo ""
         ;;
