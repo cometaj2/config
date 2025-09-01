@@ -109,8 +109,12 @@ sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 # -d switches the dedicated card on and the integrated card off (better performance). This fails.
 # Requires a reboot after running the desired command for it to take effect.
 #
-# iMac 2015 with AMD Radeon HD7850 Vulkan Configuration https://bbs.archlinux.org/viewtopic.php?id=299630
-# mesa and vulkan-radeon supports it. amdvlk will cause conflict if installed and should be uninstalled.
+# iMac 2015 with [AMD/ATI] Pitcairn PRO [Radeon HD 7850 / R7 265 / R9 270 1024SP]
+# Vulkan modprobe kernel configuration https://bbs.archlinux.org/viewtopic.php?id=299630
+# mesa and vulkan-radeon supports it; amdvlk will cause conflict and should be uninstalled.
+#
+# Macbook Pro 2012 with:
+# Kepler series NVIDIA Corporation GK107M [GeForce GT 650M Mac Edition] (rev a1)
 #
 # =============================================================================
 
@@ -124,11 +128,24 @@ yes | yay -S --needed inxi
 inxi -Gxxxz
 echo ""
 
+#yay -Rdd nvidia-dkms
+#yay -Rdd mesa
+#yay -Rdd lib32-mesa
+#yay -Rdd glu
+#yay -Qs mesa | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
+#yay -Qs nvidia-dkms | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
+#yay -S --needed nvidia-740xx-dkms
+#yay -S --needed nvidia-470xx-utils
+#yay -S --needed lib32-nvidia-470xx-utils
+#yay -S --needed nvidia-470xx-utils
+#yay -S --needed mesa-utils # for glxinfo
+
 GRAPHICS=$(lspci -d ::03xx)
 case "$GRAPHICS" in 
     *'[AMD/ATI] Pitcairn PRO [Radeon HD 7850 / R7 265 / R9 270 1024SP]'*)
         echo ""
         echo "Found: $GRAPHICS"
+        echo "$GRAPHICS"
         echo "Cleaning up after steam..."
         yes | yay -Rns lib32-amdvlk 2>/dev/null
         yes | yay -Rns amdvlk 2>/dev/null
@@ -150,6 +167,7 @@ case "$GRAPHICS" in
     *)
         echo ""
         echo "Ignoring: $GRAPHICS"
+        echo "$GRAPHICS"
         echo ""
         ;;
 esac
