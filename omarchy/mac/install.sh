@@ -176,6 +176,7 @@ case "$GRAPHICS" in
         yes | yay -S --needed lib32-nvidia-470xx-utils
         yes | yay -S --needed vulkan-tools
         yes | yay -S --needed mesa-utils
+        sudo cp ./etc/modprobe.d/nvidia.conf /etc/modprobe.d/nvidia.conf
         sudo cp ./etc/modprobe.d/nvidia_drm.conf /etc/modprobe.d/nvidia_drm.conf
 
         yes | yay -S --needed gpu-switch
