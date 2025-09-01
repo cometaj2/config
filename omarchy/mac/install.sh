@@ -169,10 +169,7 @@ case "$GRAPHICS" in
 
         yay -Rdd --noconfirm nvidia-dkms 2>/dev/null
         yay -Rdd --noconfirm lib32-nvidia-utils 2>/dev/null
-#        yay -Rdd --noconfirm mesa 2>/dev/null
-#        yay -Rdd --noconfirm nvidia-utils 2>/dev/null
         yes | yay -S --needed nvidia-470xx-dkms
-#        yes | yay -S --needed nvidia-470xx-utils
         yes | yay -S --needed lib32-nvidia-470xx-utils
         yes | yay -S --needed vulkan-tools
         yes | yay -S --needed mesa-utils
@@ -180,8 +177,8 @@ case "$GRAPHICS" in
         sudo cp ./etc/modprobe.d/nvidia_drm.conf /etc/modprobe.d/nvidia_drm.conf
 
         yes | yay -S --needed gpu-switch
-        sudo gpu-switch -i
-        #sudo gpu-switch -d
+        sudo gpu-switch -i  # works
+        #sudo gpu-switch -d # doesn't work
 
         yes | sudo mkinitcpio -P
         echo "hint: reboot!"
