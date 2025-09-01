@@ -110,14 +110,19 @@ sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 # Requires a reboot after running the desired command for it to take effect.
 #
 # iMac 2015 with AMD Radeon HD7850 Vulkan Configuration https://bbs.archlinux.org/viewtopic.php?id=299630
-# mesa and vulkan-radeon supports it. amdvlk will cause conflict if installed.
-#
+# mesa and vulkan-radeon supports it. amdvlk will cause conflict if installed and should be uninstalled.
 #
 # =============================================================================
 
 yes | yay -S --needed gpu-switch
 #sudo gpu-switch -i
 #sudo gpu-switch -d
+
+# Graphics card activation display id and monitor information
+echo ""
+yes | yay -S --needed inxi
+inxi -Gxxxz
+echo ""
 
 GRAPHICS=$(lspci -d ::03xx)
 case "$GRAPHICS" in 
