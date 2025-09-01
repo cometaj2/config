@@ -139,6 +139,7 @@ echo ""
 #yay -S --needed lib32-nvidia-470xx-utils
 #yay -S --needed nvidia-470xx-utils
 #yay -S --needed mesa-utils # for glxinfo
+#sudo cp ./etc/modprobe.d/nvidia_drm.conf /etc/modprobe.d/nvidia_drm.conf
 
 GRAPHICS=$(lspci -d ::03xx)
 case "$GRAPHICS" in 
