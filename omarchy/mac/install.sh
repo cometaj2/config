@@ -140,13 +140,13 @@ case "$GRAPHICS" in
         yes | yay -S --needed vulkan-radeon
         yes | yay -S --needed mesa-utils
         yes | yay -S --needed vulkan-tools
-        echo "hint: vulkaninfo"
-        echo "hint: vkcube"
-        echo "hint: glxgears"
-        echo ""
-
         sudo cp ./etc/modprobe.d/amdgpu.conf /etc/modprobe.d/amdgpu.conf
         sudo cp ./etc/modprobe.d/radeon.conf /etc/modprobe.d/radeon.conf
+        echo "hint: glxinfo"
+        echo "hint: vulkaninfo"
+        echo "hint: glxgears"
+        echo "hint: vkcube"
+        echo ""
 
         yes | sudo mkinitcpio -P
         echo "hint: reboot!"
@@ -165,6 +165,11 @@ case "$GRAPHICS" in
         yes | yay -S --needed mesa-utils
         sudo cp ./etc/modprobe.d/nvidia.conf /etc/modprobe.d/nvidia.conf
         sudo cp ./etc/modprobe.d/nvidia_drm.conf /etc/modprobe.d/nvidia_drm.conf
+        echo "hint: glxinfo"
+        echo "hint: vulkaninfo"
+        echo "hint: glxgears"
+        echo "hint: vkcube"
+        echo ""
 
         yes | yay -S --needed gpu-switch
         sudo gpu-switch -i  # works
