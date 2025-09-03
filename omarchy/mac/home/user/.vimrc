@@ -11,7 +11,6 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'preservim/nerdtree'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-"Plugin 'github/copilot.vim'
 
 call vundle#end()            " required
 filetype plugin on    " required
