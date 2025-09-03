@@ -120,3 +120,12 @@ highlight LineNr ctermfg=94
 :  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
 :  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 :augroup END
+
+" Check if running in Wayland by checking the WAYLAND_DISPLAY environment variable
+" Sync yanks and deletes to Wayland clipboard while preserving the unnamed register
+if !empty($WAYLAND_DISPLAY)
+  augroup wayland_clipboard
+    autocmd!
+    autocmd TextYankPost * call system('wl-copy', @")
+  augroup END
+endif

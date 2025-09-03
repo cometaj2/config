@@ -64,12 +64,24 @@ source ~/.bash_profile
 #
 # =============================================================================
 
-sudo rmmod b43 2>/dev/null
-sudo rmmod bcma 2>/dev/null
-yes | yay -S --needed broadcom-wl
-sudo modprobe wl
-echo "hint: iwctl device list"
-echo "hint: iwctl station wlan0 connect <network>"
+NETWORK=$(lspci -d 14e4::)
+case "$NETWORK" in 
+    *'Broadcom Inc.'*)
+        echo ""
+        echo "Found:"
+        echo "$NETWORK"
+        echo "Cleaning up after arch baseline..."
+        echo ""
+
+        sudo rmmod b43 2>/dev/null
+        sudo rmmod bcma 2>/dev/null
+        yes | yay -S --needed broadcom-wl
+        sudo modprobe wl
+        echo "hint: iwctl device list"
+        echo "hint: iwctl station wlan0 connect <network>"
+        echo ""
+        ;;
+esac
 
 # =============================================================================
 # Apps
@@ -118,18 +130,14 @@ sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 #
 # =============================================================================
 
-
 # Graphics card activation display id and monitor information
-echo ""
 yes | yay -S --needed inxi
-inxi -Gxxxz
-echo ""
 
 GRAPHICS=$(lspci -d ::03xx)
 case "$GRAPHICS" in 
     *'[AMD/ATI] Pitcairn PRO [Radeon HD 7850 / R7 265 / R9 270 1024SP]'*)
         echo ""
-        echo "Found: $GRAPHICS"
+        echo "Found:"
         echo "$GRAPHICS"
         echo "Cleaning up after arch baseline..."
         echo ""
@@ -143,9 +151,15 @@ case "$GRAPHICS" in
         sudo cp ./etc/modprobe.d/amdgpu.conf /etc/modprobe.d/amdgpu.conf
         sudo cp ./etc/modprobe.d/radeon.conf /etc/modprobe.d/radeon.conf
         echo "hint: glxinfo"
+        echo "hint: eglinfo"
         echo "hint: vulkaninfo"
         echo "hint: glxgears"
+        echo "hint: eglgears_wayland"
+        echo "hint: eglgears_x11"
         echo "hint: vkcube"
+        echo ""
+
+        inxi -Gxxxz
         echo ""
 
         yes | sudo mkinitcpio -P
@@ -166,14 +180,20 @@ case "$GRAPHICS" in
         sudo cp ./etc/modprobe.d/nvidia.conf /etc/modprobe.d/nvidia.conf
         sudo cp ./etc/modprobe.d/nvidia_drm.conf /etc/modprobe.d/nvidia_drm.conf
         echo "hint: glxinfo"
+        echo "hint: eglinfo"
         echo "hint: vulkaninfo"
         echo "hint: glxgears"
+        echo "hint: eglgears_wayland"
+        echo "hint: eglgears_x11"
         echo "hint: vkcube"
         echo ""
 
         yes | yay -S --needed gpu-switch
         sudo gpu-switch -i  # works
         #sudo gpu-switch -d # doesn't work
+
+        inxi -Gxxxz
+        echo ""
 
         yes | sudo mkinitcpio -P
         echo "hint: reboot!"
