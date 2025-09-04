@@ -109,6 +109,8 @@ sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
 
 sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
+sudo cp ./home/user/.config/hypr/super_copy.sh ~/.config/hypr/super_copy.sh; sudo chmod 700 ~/.config/hypr/super_copy.sh
+sudo cp ./home/user/.config/hypr/super_paste.sh ~/.config/hypr/super_paste.sh; sudo chmod 700 ~/.config/hypr/super_copy.sh
 sudo cp ./home/user/.config/brave-flags.conf ~/.config/brave-flags.conf
 sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 

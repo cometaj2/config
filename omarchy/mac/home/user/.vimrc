@@ -121,10 +121,25 @@ highlight LineNr ctermfg=94
 :augroup END
 
 " Check if running in Wayland by checking the WAYLAND_DISPLAY environment variable
-" Sync yanks and deletes to Wayland clipboard while preserving the unnamed register
+" Sync yanks and deletes to Wayland clipboard while preserving the unnamed register (TextYankPost)
+" Sync Wayland clipboard to Vim's unnamed register on file open (BufReadPost)
 if !empty($WAYLAND_DISPLAY)
-  augroup wayland_clipboard
-    autocmd!
-    autocmd TextYankPost * call system('wl-copy', @")
-  augroup END
+    augroup wayland_clipboard
+        autocmd!
+        autocmd TextYankPost * call system('wl-copy', @")
+        autocmd BufReadPost * call SyncWaylandClipboard()
+    augroup END
+
+    " Function to sync Wayland clipboard to Vim's unnamed register
+    " Get Wayland clipboard content
+    " Remove trailing newline from wl-paste output if present
+    " Compare with current unnamed register content
+    " Update unnamed register if different
+    function! SyncWaylandClipboard()
+        let l:clipboard = system('wl-paste --no-newline')
+        let l:clipboard = substitute(l:clipboard, '\n\+$', '', '')
+        if l:clipboard != @"
+          let @" = l:clipboard
+        endif
+    endfunction
 endif
