@@ -109,8 +109,8 @@ sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
 
 sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
-sudo cp ./home/user/.config/hypr/super_copy.sh ~/.config/hypr/super_copy.sh; sudo chmod 700 ~/.config/hypr/super_copy.sh
-sudo cp ./home/user/.config/hypr/super_paste.sh ~/.config/hypr/super_paste.sh; sudo chmod 700 ~/.config/hypr/super_copy.sh
+sudo cp ./usr/bin/suc /usr/bin/suc; sudo chmod 755 /usr/bin/suc
+sudo cp ./usr/bin/sup /usr/bin/sup; sudo chmod 755 /usr/bin/sup
 sudo cp ./home/user/.config/brave-flags.conf ~/.config/brave-flags.conf
 sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 
@@ -122,6 +122,8 @@ sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 # -i switches the integrated card on and the dedicated card off (better battery life)
 # -d switches the dedicated card on and the integrated card off (better performance). This fails.
 # Requires a reboot after running the desired command for it to take effect.
+#
+# Some generic guidance for Intel Macs, https://dev.to/x1unix/archlinux-setup-guide-for-intel-macbook-pro-58b8
 #
 # iMac 2015 with [AMD/ATI] Pitcairn PRO [Radeon HD 7850 / R7 265 / R9 270 1024SP]
 # Vulkan modprobe kernel configuration https://bbs.archlinux.org/viewtopic.php?id=299630

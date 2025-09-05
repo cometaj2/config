@@ -19,8 +19,7 @@ padding.y = 14
 decorations = "None"
 opacity = 1
 
-[keyboard]
-bindings = [
-{ key = "F11", action = "ToggleFullscreen" }
-]
-
+[cursor]
+style = { shape = "Underline", blinking = "Always" }
+blink_interval = 750 # Adjust as needed, in milliseconds
+blink_timeout = 0 # 0 disables timeout, making blinking persistent
