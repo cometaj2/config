@@ -75,7 +75,7 @@ case "$NETWORK" in
 
         sudo rmmod b43 2>/dev/null
         sudo rmmod bcma 2>/dev/null
-        yes | yay -S --needed broadcom-wl
+        yes | sudo pacman -S --needed broadcom-wl
         sudo modprobe wl
         echo "hint: iwctl device list"
         echo "hint: iwctl station wlan0 connect <network>"
@@ -98,10 +98,16 @@ yay -Qs lazygit | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconf
 yay -Qs neovim | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
 yay -Qs lazydocker | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
 yay -Qs 1password | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
-yes | yay -S --needed vim
+yes | sudo pacman -S --needed vim
+yes | sudo pacman -S --needed tar
+yes | sudo pacman -S --needed pacman-contrib
 yes | yay -S --needed brave-bin
-yes | yay -S --needed keeper-password-manager
-# yes | yay -S --needed balena-etcher
+
+# We make the keeper-password-manager package ourselves to avoid the AUR
+cd ./pkg/keeper-password-manager
+yes | makepkg -sic
+rm -rf keeper*
+cd ../..
 
 yes | yay -S --needed mbpfan
 sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
