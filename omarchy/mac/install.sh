@@ -125,6 +125,19 @@ sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
 
 sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
+KEYBOARD=$(lsusb | grep Keyboard)
+case "$KEYBOARD" in
+    *'Primax Electronics, Ltd HP PR1101U / Primax PMX-KPR1101U Keyboard'*)
+        echo "Swapping alt and windows key"
+        STR="""input{\n
+        kb_options = altwin:swap_alt_win\n
+        }"""
+        echo -e $STR >> ~/.config/hypr/bindings.conf
+        ;;
+    *)
+        ;;
+esac
+
 sudo cp ./usr/bin/suc /usr/bin/suc; sudo chmod 755 /usr/bin/suc
 sudo cp ./usr/bin/sup /usr/bin/sup; sudo chmod 755 /usr/bin/sup
 sudo cp ./home/user/.config/brave-flags.conf ~/.config/brave-flags.conf
