@@ -4,6 +4,10 @@ class=$(hyprctl activewindow -j | jq -r .class)
 
 if [ "$class" = "Alacritty" ]; then
     hyprctl dispatch sendshortcut "CTRL SHIFT, V,"
+    sleep 0.1
+    wl-copy -c
 else
     hyprctl dispatch sendshortcut "CTRL, V,"
+    sleep 0.1
+    wl-copy -c
 fi
