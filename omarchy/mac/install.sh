@@ -40,7 +40,9 @@ cp ./home/user/.vimrc ~
 # =============================================================================
 
 cp ./home/user/.bash_profile ~
-cp ./home/user/.gitconfig ~
+if [ ! -f ~/.gitconfig ]; then
+    cp ./home/user/.gitconfig ~
+fi
 
 rm ~/.bashrc
 touch ~/.bashrc
@@ -103,11 +105,19 @@ yes | sudo pacman -S --needed tar
 yes | sudo pacman -S --needed pacman-contrib
 yes | yay -S --needed brave-bin
 
-# We make the keeper-password-manager package ourselves to avoid the AUR
-cd ./pkg/keeper-password-manager
-yes | makepkg -sic
-rm -rf keeper*
-cd ../..
+# We build the keeper-password-manager package ourselves to avoid the AUR
+INSTALLED=$(pacman -Q keeper-password-manager)
+case "$INSTALLED" in
+    *'keeper-password-manager'*)
+        echo "$INSTALLED is already installed -- skipping"
+        ;;
+    *)
+        cd ./pkg/keeper-password-manager
+        yes | makepkg -sic
+        rm -rf keeper*
+        cd ../..
+        ;;
+esac
 
 yes | yay -S --needed mbpfan
 sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
