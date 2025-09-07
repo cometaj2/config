@@ -119,7 +119,7 @@ yes | sudo pacman -S --needed pacman-contrib
 yes | yay -S --needed brave-bin
 pacmant keeper-password-manager
 
-yes | yay -S --needed mbpfan
+pacmant mbpfan
 sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
 sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
