@@ -164,7 +164,7 @@ sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 # =============================================================================
 
 # Graphics card activation display id and monitor information
-yes | yay -S --needed inxi
+yes | sudo pacman -S --needed inxi
 
 GRAPHICS=$(lspci -d ::03xx)
 case "$GRAPHICS" in 
