@@ -1,5 +1,34 @@
 #!/bin/bash
 
+# =============================================================================
+# Pacmant
+# =============================================================================
+# pacmant is a basic script to build and install packages that aren't in the
+# pacman mirrors but have otherwise been vetted by the user and are 
+# considered trusted.
+#
+# pacmant builds packages from a PKGBUILD descriptions (like with the AUR)
+#
+# This is intended as a vetted and trusted inbetween against pacman's trusted
+# package installs vs yay's untrusted AUR package installs.
+#
+# pacmant expects a PACMANT_PACKAGES environment variable to be set as a target
+# for vetted and trusted packages to process. For example:
+#
+# export PACMANT_PACKAGES="$PWD/pkg"
+#
+# =============================================================================
+
+# Trap function to ensure popd is called on script exit or interruption
+cleanup() {
+    unset GLOBIGNORE
+    popd >/dev/null 2>&1 || true  # Run popd, suppress errors if stack is empty
+    exit 0
+}
+
+# Set trap for SIGINT (Ctrl+C), SIGTERM, and EXIT
+trap cleanup SIGINT SIGTERM EXIT
+
 export PKGDIR="$PACMANT_PACKAGES/$1"
 export SRCDEST="$PKGDIR/tmp"
 export PKGDEST="$SRCDEST/build"
