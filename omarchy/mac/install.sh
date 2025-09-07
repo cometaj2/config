@@ -177,10 +177,10 @@ case "$GRAPHICS" in
 
         yes | yay -Rns lib32-amdvlk 2>/dev/null
         yes | yay -Rns amdvlk 2>/dev/null
-        yes | yay -S --needed lib32-vulkan-radeon
-        yes | yay -S --needed vulkan-radeon
-        yes | yay -S --needed mesa-utils
-        yes | yay -S --needed vulkan-tools
+        yes | sudo pacman -S --needed lib32-vulkan-radeon
+        yes | sudo pacman -S --needed vulkan-radeon
+        yes | sudo pacman -S --needed mesa-utils
+        yes | sudo pacman -S --needed vulkan-tools
         sudo cp ./etc/modprobe.d/amdgpu.conf /etc/modprobe.d/amdgpu.conf
         sudo cp ./etc/modprobe.d/radeon.conf /etc/modprobe.d/radeon.conf
         echo "hint: glxinfo"
@@ -208,8 +208,8 @@ case "$GRAPHICS" in
         yay -Rdd --noconfirm lib32-nvidia-utils 2>/dev/null
         yes | yay -S --needed nvidia-470xx-dkms
         yes | yay -S --needed lib32-nvidia-470xx-utils
-        yes | yay -S --needed vulkan-tools
-        yes | yay -S --needed mesa-utils
+        yes | sudo pacman -S --needed vulkan-tools
+        yes | sudo pacman -S --needed mesa-utils
         sudo cp ./etc/modprobe.d/nvidia.conf /etc/modprobe.d/nvidia.conf
         sudo cp ./etc/modprobe.d/nvidia_drm.conf /etc/modprobe.d/nvidia_drm.conf
         echo "hint: glxinfo"
