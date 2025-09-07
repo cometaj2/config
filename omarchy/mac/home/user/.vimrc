@@ -127,7 +127,7 @@ if !empty($WAYLAND_DISPLAY)
     augroup wayland_clipboard
         autocmd!
         autocmd TextYankPost * call system('wl-copy', @")
-        autocmd BufReadPost * call SyncWaylandClipboard()
+        autocmd BufReadPost,CursorHold * call SyncWaylandClipboard()
     augroup END
 
     " Function to sync Wayland clipboard to Vim's unnamed register
@@ -139,7 +139,10 @@ if !empty($WAYLAND_DISPLAY)
         let l:clipboard = system('wl-paste --no-newline')
         let l:clipboard = substitute(l:clipboard, '\n\+$', '', '')
         if l:clipboard != @"
-          let @" = l:clipboard
+            let @" = l:clipboard
+        endif
+        if l:clipboard == 'Nothing is copied'
+            let @" = ''
         endif
     endfunction
 endif
