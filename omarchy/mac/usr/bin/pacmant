@@ -1,0 +1,23 @@
+#!/bin/bash
+
+export PKGDIR="$PACMANT_PACKAGES/$1"
+export SRCDEST="$PKGDIR/tmp"
+export PKGDEST="$SRCDEST/build"
+
+# We build the package ourselves via trust to avoid the AUR
+INSTALLED=$(pacman -Q $1 2>/dev/null)
+case "$INSTALLED" in
+    *"$1"*)
+        echo -e "\033[33mwarning:\033[0m $INSTALLED is already installed -- skipping"
+        echo -e " there is nothing to do"
+        ;;
+    *)
+        mkdir -p "$SRCDEST/src"
+        pushd "$SRCDEST/src" >/dev/null
+        GLOBIGNORE="../../tmp"
+        cp -r ../../* .
+        unset GLOBIGNORE
+        yes | makepkg -sic
+        popd >/dev/null
+        ;;
+esac

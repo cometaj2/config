@@ -1,11 +1,24 @@
 # =============================================================================
+# Pacmant
+# =============================================================================
+# pacmant is a basic script to install packages that aren't in the pacman
+# mirrors but have otherwise been vetted and are trusted.
+#
+# pacmant builds packages from a PKGBUILD descriptions (like with the AUR)
+#
+# =============================================================================
+
+export PACMANT_PACKAGES="$PWD/pkg"
+sudo cp ./usr/bin/pacmant /usr/bin/pacmant; sudo chmod 755 /usr/bin/pacmant
+
+# =============================================================================
 # Terminal
 # =============================================================================
 # alacritty.toml configuration for oldschool 8x16 terminal font
 #
 # =============================================================================
 
-yes | yay -S --needed oldschool-pc-fonts
+pacmant oldschool-pc-fonts
 sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 # =============================================================================
@@ -104,20 +117,7 @@ yes | sudo pacman -S --needed vim
 yes | sudo pacman -S --needed tar
 yes | sudo pacman -S --needed pacman-contrib
 yes | yay -S --needed brave-bin
-
-# We build the keeper-password-manager package ourselves to avoid the AUR
-INSTALLED=$(pacman -Q keeper-password-manager)
-case "$INSTALLED" in
-    *'keeper-password-manager'*)
-        echo "$INSTALLED is already installed -- skipping"
-        ;;
-    *)
-        cd ./pkg/keeper-password-manager
-        yes | makepkg -sic
-        rm -rf keeper*
-        cd ../..
-        ;;
-esac
+pacmant keeper-password-manager
 
 yes | yay -S --needed mbpfan
 sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
