@@ -1,5 +1,7 @@
+export LC_COLLATE=POSIX
+export LC_CTYPE=POSIX   # solves the backtick vs single quote issue in man pages against the en_US.UTF-8 locale
+
 # Miscellaneous but useful
-export LC_COLLATE=C
 alias vi="vim"
 alias wl-paste="wl-paste 2>/dev/null"
 #alias sed="gsed"
@@ -13,7 +15,7 @@ alias ..="cd .."
 alias fuz="fzf"
 alias viz='vim $(fuz)'
 alias buff="pbpaste"
-alias cir="circleci local execute 'Python 3.12'"
+alias cir="circleci local execute 'Python 3.13'"
 
 # git aliases
 #alias tac="sed -e 's|/|QQQMARKQQQ|g' | tr '\\' '/' | sed -e 's|QQQMARKQQQ|\\\|g' | perl -e 'print reverse<>'"
