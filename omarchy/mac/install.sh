@@ -125,6 +125,7 @@ sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
 
 sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
+sudo pacman -S usbutils
 KEYBOARD=$(lsusb | grep Keyboard)
 case "$KEYBOARD" in
     *'Primax Electronics, Ltd HP PR1101U / Primax PMX-KPR1101U Keyboard'*)
@@ -140,8 +141,6 @@ esac
 
 sudo cp ./usr/bin/suc /usr/bin/suc; sudo chmod 755 /usr/bin/suc
 sudo cp ./usr/bin/sup /usr/bin/sup; sudo chmod 755 /usr/bin/sup
-sudo cp ./home/user/.config/brave-flags.conf ~/.config/brave-flags.conf
-sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 
 # =============================================================================
 # Graphics Configuration
@@ -175,6 +174,8 @@ case "$GRAPHICS" in
         echo "Cleaning up after arch baseline..."
         echo ""
 
+        sudo cp ./home/user/.config/brave-flags.conf ~/.config/brave-flags.conf
+        sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
         yes | yay -Rns lib32-amdvlk 2>/dev/null
         yes | yay -Rns amdvlk 2>/dev/null
         yes | sudo pacman -S --needed lib32-vulkan-radeon
@@ -204,6 +205,8 @@ case "$GRAPHICS" in
         echo "Cleaning up after arch baseline..."
         echo ""
 
+        sudo cp ./home/user/.config/brave-flags.conf ~/.config/brave-flags.conf
+        sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
         yay -Rdd --noconfirm nvidia-dkms 2>/dev/null
         yay -Rdd --noconfirm lib32-nvidia-utils 2>/dev/null
         yes | yay -S --needed nvidia-470xx-dkms
