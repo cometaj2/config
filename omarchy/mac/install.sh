@@ -31,6 +31,23 @@ sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacrit
 python -m venv ~/.venv
 source ~/.venv/bin/activate
 pip install huckle
+pip install twine
+pip install pytest
+if [ ! -f ~/Documents/workspace ]; then
+    mkdir ~/Documents/workspace
+fi
+if [ ! -f ~/Documents/workspace/hcli ]; then
+    mkdir ~/Documents/workspace/hcli
+fi
+if [ ! -f ~/Documents/workspace/hcli/huckle ]; then
+    git clone https://github.com/cometaj2/huckle.git ~/Documents/workspace/hcli/huckle
+fi
+if [ ! -f ~/Documents/workspace/hcli/hcli_core ]; then
+    git clone https://github.com/cometaj2/hcli_core.git ~/Documents/workspace/hcli/hcli_core
+fi
+if [ ! -f ~/Documents/workspace/hcli/hcli_hag ]; then
+    git clone https://github.com/cometaj2/hcli_hag.git ~/Documents/workspace/hcli/hcli_hag
+fi
 
 # =============================================================================
 # Vim
