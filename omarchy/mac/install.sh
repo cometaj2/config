@@ -31,8 +31,10 @@ sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacrit
 python -m venv ~/.venv
 source ~/.venv/bin/activate
 pip install huckle
+pip install build
 pip install twine
 pip install pytest
+pip install gunicorn
 if [ ! -f ~/Documents/workspace ]; then
     mkdir ~/Documents/workspace
 fi
