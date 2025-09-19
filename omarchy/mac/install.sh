@@ -213,6 +213,7 @@ case "$GRAPHICS" in
         inxi -Gxxxz
         echo ""
 
+        sudo cp -r ./lib/firmware/* /lib/firmware/
         yes | sudo mkinitcpio -P
         echo "hint: reboot!"
         ;;
@@ -248,6 +249,7 @@ case "$GRAPHICS" in
         inxi -Gxxxz
         echo ""
 
+        sudo cp -r ./lib/firmware/* /lib/firmware/
         yes | sudo mkinitcpio -P
         echo "hint: reboot!"
         ;;
