@@ -144,7 +144,8 @@ sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
 
 sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
-sudo pacman -S usbutils
+
+yes | sudo pacman -S --needed usbutils
 KEYBOARD=$(lsusb | grep Keyboard)
 case "$KEYBOARD" in
     *'Primax Electronics, Ltd HP PR1101U / Primax PMX-KPR1101U Keyboard'*)
