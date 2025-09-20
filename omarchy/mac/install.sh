@@ -162,6 +162,16 @@ sudo cp ./usr/bin/suc /usr/bin/suc; sudo chmod 755 /usr/bin/suc
 sudo cp ./usr/bin/sup /usr/bin/sup; sudo chmod 755 /usr/bin/sup
 
 # =============================================================================
+# mkinitcpio
+# =============================================================================
+# mkinitcpio warns about missing firmware when invoked. The warnings are harmless but are annoying.
+# Firmware can be mocked to prevent mkinitcpio from warning about missing the missing firmware.
+#
+# =============================================================================
+
+sudo cp -r ./lib/firmware/* /lib/firmware/
+
+# =============================================================================
 # Graphics Configuration
 # =============================================================================
 # GPU switching app for MacBook Pro with hybrid graphics (e.g. MacBook Pro 9,1 2012 with integrated intel/NVIDIA graphics).
@@ -215,7 +225,6 @@ case "$GRAPHICS" in
         inxi -Gxxxz
         echo ""
 
-        sudo cp -r ./lib/firmware/* /lib/firmware/
         yes | sudo mkinitcpio -P
         echo "hint: reboot!"
         ;;
@@ -251,7 +260,6 @@ case "$GRAPHICS" in
         inxi -Gxxxz
         echo ""
 
-        sudo cp -r ./lib/firmware/* /lib/firmware/
         yes | sudo mkinitcpio -P
         echo "hint: reboot!"
         ;;
