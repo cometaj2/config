@@ -159,8 +159,15 @@ case "$KEYBOARD" in
         ;;
 esac
 
+# Copy paste adjustments to integrate with vim better and to improve security
 sudo cp ./usr/bin/suc /usr/bin/suc; sudo chmod 755 /usr/bin/suc
 sudo cp ./usr/bin/sup /usr/bin/sup; sudo chmod 755 /usr/bin/sup
+
+# Mouseless installation
+mkdir ~/.config/mouseless
+sudo usermod -aG input $USER
+sudo cp ./home/user/.config/mouseless/config.yaml ~/.config/mouseless/; sudo chmod 755 ~/.config/mouseless/config.yaml
+pacmant mouseless-bin
 
 # =============================================================================
 # mkinitcpio

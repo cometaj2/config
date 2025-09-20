@@ -1,0 +1,2 @@
+KERNEL=="uinput", GROUP="$USER", MODE:="0660"
+KERNEL=="event*", GROUP="$USER", NAME="input/%k", MODE="660"

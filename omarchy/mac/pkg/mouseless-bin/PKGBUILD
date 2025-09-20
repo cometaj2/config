@@ -1,0 +1,16 @@
+# Maintainer: Johannes Bensmann <johannesbensmann@gmx.de>
+pkgname=mouseless-bin
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="Control the mouse with your keyboard and remap keys"
+arch=('x86_64')
+url="https://github.com/jbensmann/mouseless"
+license=('MIT')
+depends=()
+source=("https://github.com/jbensmann/mouseless/releases/download/v${pkgver}/mouseless-linux-amd64.tar.gz")
+sha256sums=('fa1d94d2a7a7db70cd8d4b2775763a0a1da271e857c9bdca45ba2b89ec79c9eb')
+
+package() {
+    cd "${srcdir}"
+    install -Dm755 dist/mouseless "${pkgdir}/usr/bin/mouseless"
+}
