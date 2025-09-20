@@ -182,11 +182,11 @@ sudo cp -r ./lib/firmware/* /lib/firmware/
 #
 # Some generic guidance for Intel Macs, https://dev.to/x1unix/archlinux-setup-guide-for-intel-macbook-pro-58b8
 #
-# iMac 2015 with [AMD/ATI] Pitcairn PRO [Radeon HD 7850 / R7 265 / R9 270 1024SP]
+# iMac 2015 (does not require gpu-switching) with [AMD/ATI] Pitcairn PRO [Radeon HD 7850 / R7 265 / R9 270 1024SP]
 # Vulkan modprobe kernel configuration https://bbs.archlinux.org/viewtopic.php?id=299630
 # mesa and vulkan-radeon supports it; amdvlk will cause conflict and should be uninstalled.
 #
-# Macbook Pro 2012 with:
+# Macbook Pro 2012 (requires gpu-switching) with:
 # Kepler series NVIDIA Corporation GK107M [GeForce GT 650M Mac Edition] (rev a1)
 #
 # =============================================================================
