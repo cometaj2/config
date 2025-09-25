@@ -25,8 +25,8 @@ comboTime: 0
 layers:
 - name: initial
   bindings:
-    tab: tap-hold-next tab ; toggle-layer mouse ; 500
-    a: tap-hold a ; toggle-layer mouse ; 300
+    tab: tap-hold-next tab ; toggle-layer mouse ; 750
+#    a: tap-hold a ; toggle-layer mouse ; 300
     f+d: layer mouse
 - name: mouse
   passThrough: true

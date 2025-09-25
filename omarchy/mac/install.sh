@@ -135,6 +135,7 @@ yay -Qs 1password | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noco
 yes | sudo pacman -S --needed vim
 yes | sudo pacman -S --needed tar
 yes | sudo pacman -S --needed pacman-contrib
+yes | sudo pacman -S --needed net-tools
 yes | yay -S --needed brave-bin
 pacmant keeper-password-manager
 
