@@ -173,8 +173,8 @@ pacmant mouseless-bin
 # =============================================================================
 # mkinitcpio
 # =============================================================================
-# mkinitcpio warns about missing firmware when invoked. The warnings are harmless but are annoying.
-# Firmware can be mocked to prevent mkinitcpio from warning about missing the missing firmware.
+# mkinitcpio warns about missing firmware when invoked. The warnings are harmless but annoying.
+# Firmware can be mocked to prevent mkinitcpio from warning about the missing firmware.
 #
 # =============================================================================
 
