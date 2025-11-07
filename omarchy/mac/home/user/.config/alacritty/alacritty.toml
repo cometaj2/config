@@ -11,7 +11,7 @@ offset = { x = 0, y = -2 } # Adjust 'y' for line spacing
 #normal = { family = "CaskaydiaMono Nerd Font", style = "Regular" }
 #bold = { family = "CaskaydiaMono Nerd Font", style = "Bold" }
 #italic = { family = "CaskaydiaMono Nerd Font", style = "Italic" }
-size = 17
+size = 28
 
 [window]
 padding.x = 14
