@@ -24,7 +24,7 @@ sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacrit
 # =============================================================================
 # Python
 # =============================================================================
-# Baseline venv configuration
+# Baseline python venv configuration and hcli development
 #
 # =============================================================================
 
