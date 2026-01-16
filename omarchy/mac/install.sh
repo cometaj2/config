@@ -47,6 +47,9 @@ fi
 if [ ! -f ~/Documents/workspace/hcli/hcli_core ]; then
     git clone https://github.com/cometaj2/hcli_core.git ~/Documents/workspace/hcli/hcli_core
 fi
+if [ ! -f ~/Documents/workspace/hcli/hcli_hc ]; then
+    git clone https://github.com/cometaj2/hcli_hc.git ~/Documents/workspace/hcli/hcli_hc
+fi
 if [ ! -f ~/Documents/workspace/hcli/hcli_hag ]; then
     git clone https://github.com/cometaj2/hcli_hag.git ~/Documents/workspace/hcli/hcli_hag
 fi
@@ -95,6 +98,7 @@ source ~/.bash_profile
 # Broadcom based WiFi on Macs
 #
 # A reboot may be required after removing modules and setting up wl
+# For MacBook Pro 9,1 2012, if broadcom-wl doesn't work, try broadcom-wl-dkms.
 #
 # =============================================================================
 
