@@ -34,7 +34,7 @@ pip install huckle
 pip install build
 pip install twine
 pip install pytest
-pip install gunicorn
+pip install gunicorn==23.0.0
 if [ ! -f ~/Documents/workspace ]; then
     mkdir ~/Documents/workspace
 fi
@@ -53,6 +53,15 @@ fi
 if [ ! -f ~/Documents/workspace/hcli/hcli_hag ]; then
     git clone https://github.com/cometaj2/hcli_hag.git ~/Documents/workspace/hcli/hcli_hag
 fi
+
+yes | sudo pacman -S --needed pyenv
+yes n | pyenv install 3.8
+yes n | pyenv install 3.9
+yes n | pyenv install 3.10
+yes n | pyenv install 3.11
+yes n | pyenv install 3.12
+yes n | pyenv install 3.13
+yes n | pyenv install 3.14
 
 # =============================================================================
 # Vim
@@ -157,6 +166,8 @@ case "$KEYBOARD" in
         echo "Swapping alt and windows key"
         STR="""input{\n
         kb_options = altwin:swap_alt_win\n
+        repeat_rate = 50\n
+        repeat_delay = 200\n
         }"""
         echo -e $STR >> ~/.config/hypr/bindings.conf
         ;;
