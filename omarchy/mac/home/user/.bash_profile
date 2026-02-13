@@ -58,8 +58,8 @@ alias pub="python manage.py publish"
 alias tag="python manage.py tag"
 alias pyc="find . | grep -E '(/__pycache__$|\.pyc$|\.pyo$)' | xargs rm -rf"
 alias pyt="python -m pytest -v"
-alias gut="pyc;rm -rf build/ dist/ *.egg-info/ requirements.txt"
-alias dry='if git rev-parse --show-toplevel >/dev/null 2>&1; then cd "$(git rev-parse --show-toplevel)"; gut; python manage.py dry-run; else echo "Error: Not in a git repository"; return 1; fi'
+alias gut='if git rev-parse --show-toplevel >/dev/null 2>&1; then cd "$(git rev-parse --show-toplevel)"; pyc;rm -rf .tox/ build/ dist/ *.egg-info/ requirements.txt'
+alias dry='gut; python manage.py dry-run; else echo "Error: Not in a git repository"; return 1; fi'
 
 # add homebrew coreutils
 export PATH="/opt/homebrew/bin/:$PATH"
@@ -115,7 +115,7 @@ hai() {
 
 # pyenv setup
 export TOX_DOCKER_GATEWAY=172.17.0.1
-pyenv global 3.8 3.9 3.10 3.11 3.12 3.13 3.14
+pyenv global 3.9 3.10 3.11 3.12 3.13 3.14
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"     # prepends shims to PATH

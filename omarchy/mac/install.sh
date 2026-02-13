@@ -30,38 +30,45 @@ sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacrit
 
 python -m venv ~/.venv
 source ~/.venv/bin/activate
+
 pip install huckle
 pip install build
 pip install twine
 pip install pytest
-pip install gunicorn==23.0.0
-if [ ! -f ~/Documents/workspace ]; then
+pip install gunicorn==25.0.1
+if [ ! -d ~/Documents/workspace ]; then
     mkdir ~/Documents/workspace
 fi
-if [ ! -f ~/Documents/workspace/hcli ]; then
+if [ ! -d ~/Documents/workspace/hcli ]; then
     mkdir ~/Documents/workspace/hcli
 fi
-if [ ! -f ~/Documents/workspace/hcli/huckle ]; then
+if [ ! -d ~/Documents/workspace/hcli/huckle ]; then
     git clone https://github.com/cometaj2/huckle.git ~/Documents/workspace/hcli/huckle
 fi
-if [ ! -f ~/Documents/workspace/hcli/hcli_core ]; then
+if [ ! -d ~/Documents/workspace/hcli/hcli_core ]; then
     git clone https://github.com/cometaj2/hcli_core.git ~/Documents/workspace/hcli/hcli_core
 fi
-if [ ! -f ~/Documents/workspace/hcli/hcli_hc ]; then
+if [ ! -d ~/Documents/workspace/hcli/hcli_hc ]; then
     git clone https://github.com/cometaj2/hcli_hc.git ~/Documents/workspace/hcli/hcli_hc
 fi
-if [ ! -f ~/Documents/workspace/hcli/hcli_hag ]; then
+if [ ! -d ~/Documents/workspace/hcli/hcli_hag ]; then
     git clone https://github.com/cometaj2/hcli_hag.git ~/Documents/workspace/hcli/hcli_hag
 fi
 
-yes | sudo pacman -S --needed pyenv
-yes n | pyenv install 3.8
+curl https://pyenv.run | bash
 yes n | pyenv install 3.9
 yes n | pyenv install 3.10
 yes n | pyenv install 3.11
 yes n | pyenv install 3.12
 yes n | pyenv install 3.13
 yes n | pyenv install 3.14
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+pyenv global 3.9 3.10 3.11 3.12 3.13 3.14
+eval "$(pyenv init --path)"     # prepends shims to PATH
+eval "$(pyenv init -)"          # enables shims and hooks
+pyenv shell system
 
 # =============================================================================
 # Vim
@@ -71,7 +78,9 @@ yes n | pyenv install 3.14
 # =============================================================================
 
 mkdir -p ~/.vim/bundle
-git clone https://github.com/VundleVim/vundle.vim.git ~/.vim/bundle/Vundle.vim
+if [ ! -d ~/.vim/bundle/Vundle.vim ]; then
+    git clone https://github.com/VundleVim/vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
 cp ./home/user/.vimrc ~
 
 # =============================================================================
