@@ -58,8 +58,8 @@ alias pub="python manage.py publish"
 alias tag="python manage.py tag"
 alias pyc="find . | grep -E '(/__pycache__$|\.pyc$|\.pyo$)' | xargs rm -rf"
 alias pyt="python -m pytest -v"
-alias gut='if git rev-parse --show-toplevel >/dev/null 2>&1; then cd "$(git rev-parse --show-toplevel)"; pyc;rm -rf .tox/ build/ dist/ *.egg-info/ requirements.txt'
-alias dry='gut; python manage.py dry-run; else echo "Error: Not in a git repository"; return 1; fi'
+alias gut='if git rev-parse --show-toplevel >/dev/null 2>&1; then cd "$(git rev-parse --show-toplevel)"; pyc; rm -rf .tox/ build/ dist/ *.egg-info/ requirements.txt; else echo "Error: Not in a git repository"; fi'
+alias dry='gut; python manage.py dry-run'
 
 # add homebrew coreutils
 export PATH="/opt/homebrew/bin/:$PATH"
