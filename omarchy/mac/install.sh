@@ -120,24 +120,24 @@ source ~/.bash_profile
 #
 # =============================================================================
 
-NETWORK=$(lspci -d 14e4::)
-case "$NETWORK" in 
-    *'Broadcom Inc.'*)
-        echo ""
-        echo "Found:"
-        echo "$NETWORK"
-        echo "Cleaning up after arch baseline..."
-        echo ""
-
-        sudo rmmod b43 2>/dev/null
-        sudo rmmod bcma 2>/dev/null
-        yes | sudo pacman -S --needed broadcom-wl
-        sudo modprobe wl
-        echo "hint: iwctl device list"
-        echo "hint: iwctl station wlan0 connect <network>"
-        echo ""
-        ;;
-esac
+#NETWORK=$(lspci -d 14e4::)
+#case "$NETWORK" in 
+#    *'Broadcom Inc.'*)
+#        echo ""
+#        echo "Found:"
+#        echo "$NETWORK"
+#        echo "Cleaning up after arch baseline..."
+#        echo ""
+#
+#        sudo rmmod b43 2>/dev/null
+#        sudo rmmod bcma 2>/dev/null
+#        yes | sudo pacman -S --needed broadcom-wl
+#        sudo modprobe wl
+#        echo "hint: iwctl device list"
+#        echo "hint: iwctl station wlan0 connect <network>"
+#        echo ""
+#        ;;
+#esac
 
 # =============================================================================
 # Apps
@@ -161,10 +161,10 @@ yes | sudo pacman -S --needed net-tools
 yes | yay -S --needed brave-bin
 pacmant keeper-password-manager
 
-pacmant mbpfan
-sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
-sudo systemctl enable mbpfan
-sudo systemctl start mbpfan
+#pacmant mbpfan
+#sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
+#sudo systemctl enable mbpfan
+#sudo systemctl start mbpfan
 
 sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
 
@@ -208,7 +208,7 @@ pacmant mouseless-bin
 #
 # =============================================================================
 
-sudo cp -r ./lib/firmware/* /lib/firmware/
+#sudo cp -r ./lib/firmware/* /lib/firmware/
 
 # =============================================================================
 # Graphics Configuration
@@ -262,7 +262,7 @@ case "$GRAPHICS" in
         inxi -Gxxxz
         echo ""
 
-        yes | sudo mkinitcpio -P
+        yes | sudo limine-mkinitcpio -P
         echo "hint: reboot!"
         ;;
     *'Intel Corporation 3rd Gen Core processor Graphics Controller (rev 09)'*|*'NVIDIA Corporation GK107M [GeForce GT 650M Mac Edition] (rev a1)'*)
@@ -295,7 +295,7 @@ case "$GRAPHICS" in
         inxi -Gxxxz
         echo ""
 
-        yes | sudo mkinitcpio -P
+        yes | sudo limine-mkinitcpio -P
         echo "hint: reboot!"
         ;;
     *)
@@ -318,7 +318,8 @@ esac
 # # env = LIBVA_DRIVER_NAME,nvidia
 # # env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 #
-# Steam Don't Starve Together xwayland advanced configuration. Add the following configuration to DST's launch parameters
+# Steam Don't Starve Together xwayland advanced configuration. Add the following configuration to DST's launch parameters.
+# This also works for Oxygen don't included, Kingdom Newland and others as well.
 # SDL_VIDEODRIVER=x11 %command%
 #
 # =============================================================================
