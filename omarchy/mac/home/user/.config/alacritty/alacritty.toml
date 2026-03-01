@@ -23,3 +23,9 @@ opacity = 1
 style = { shape = "Underline", blinking = "Always" }
 blink_interval = 750 # Adjust as needed, in milliseconds
 blink_timeout = 0 # 0 disables timeout, making blinking persistent
+
+[keyboard]
+bindings = [
+    # Disable Ctrl+L clearing the screen
+    { key = "L", mods = "Control", action = "None" }
+]
