@@ -329,3 +329,12 @@ esac
 # =============================================================================
 # Registration in crossover fails but works in terminal via execution of /opt/cxoffice/bin/cxregister as the current user.
 
+# =============================================================================
+# Starcraft 1 on Crossover (Battle.net)
+# =============================================================================
+# Fixing to allow LAN on UDP in Starcraft 1
+#
+# sudo ufw allow 5353/udp
+# sudo ufw allow 6112:6119/udp
+# sudo ufw reload
+
