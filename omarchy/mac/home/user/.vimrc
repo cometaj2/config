@@ -146,3 +146,5 @@ if !empty($WAYLAND_DISPLAY)
         endif
     endfunction
 endif
+
+set encoding=utf-8
