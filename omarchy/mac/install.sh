@@ -148,6 +148,7 @@ source ~/.bash_profile
 #
 # bindings.conf configuration is setup to cleanup key bindings and to allow remap
 #
+# waybar font-size update
 # =============================================================================
 
 yay -Qs lazygit | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
@@ -199,6 +200,9 @@ mkdir ~/.config/mouseless
 sudo usermod -aG input $USER
 sudo cp ./home/user/.config/mouseless/config.yaml ~/.config/mouseless/; sudo chmod 755 ~/.config/mouseless/config.yaml
 pacmant mouseless-bin
+
+# waybar font-size update to 28px
+~/.config/waybar$ sed -i 's/font-size: 12px/font-size: 28px/' ~/.config/waybar/style.css
 
 # =============================================================================
 # mkinitcpio
