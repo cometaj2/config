@@ -162,10 +162,10 @@ yes | sudo pacman -S --needed net-tools
 yes | yay -S --needed brave-bin
 pacmant keeper-password-manager
 
-#pacmant mbpfan
-#sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
-#sudo systemctl enable mbpfan
-#sudo systemctl start mbpfan
+pacmant mbpfan
+sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
+sudo systemctl enable mbpfan
+sudo systemctl start mbpfan
 
 sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
 
@@ -329,6 +329,15 @@ esac
 # SDL_VIDEODRIVER=x11 %command%
 #
 # =============================================================================
+
+if [ ! -d ~/.config/steam ]; then
+    mkdir ~/.config/steam
+fi
+sudo cp ./home/user/.config/steam/steam.conf ~/.config/steam/steam.conf
+
+FILE=~/.config/hypr/hyprland.conf
+LINE='source = ~/.config/steam/steam.conf'
+grep -qxF "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
 
 # =============================================================================
 # Crossover
