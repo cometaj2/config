@@ -202,7 +202,7 @@ sudo cp ./home/user/.config/mouseless/config.yaml ~/.config/mouseless/; sudo chm
 pacmant mouseless-bin
 
 # waybar font-size update to 28px
-~/.config/waybar$ sed -i 's/font-size: 12px/font-size: 28px/' ~/.config/waybar/style.css
+sed -i 's/font-size:[[:space:]]*[0-9]\+[[:space:]]*px/font-size: 17px/g' ~/.config/waybar/style.css
 
 # =============================================================================
 # mkinitcpio
@@ -265,6 +265,8 @@ case "$GRAPHICS" in
 
         inxi -Gxxxz
         echo ""
+
+        sudo cp ./home/user/.config/hypr/monitors.conf ~/.config/hypr/monitors.conf
 
         yes | sudo limine-mkinitcpio -P
         echo "hint: reboot!"
