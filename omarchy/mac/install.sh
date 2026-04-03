@@ -12,6 +12,17 @@ export PACMANT_PACKAGES="$PWD/pkg"
 sudo cp ./usr/bin/pacmant /usr/bin/pacmant; sudo chmod 755 /usr/bin/pacmant
 
 # =============================================================================
+# Pacman foreign package query for "likely" yay installed packages
+# =============================================================================
+#
+# =============================================================================
+
+echo ""
+echo "Listing of foreign packages; likely installed via yay:"
+pacman -Qm
+echo ""
+
+# =============================================================================
 # Terminal
 # =============================================================================
 # alacritty.toml configuration for oldschool 8x16 terminal font
@@ -315,8 +326,10 @@ esac
 # =============================================================================
 # Steam
 # =============================================================================
-# If Steam seems to be running in the background but doesn't present a graphical interface, consider the following:
-# For MacBook Pro 9,1 2012, with the integrated graphics card enabled, nvidia hyprland env parameters should be commented out and the machine rebooted.
+# If Steam seems to be running in the background but doesn't present a 
+# graphical interface, consider the following:
+# For MacBook Pro 9,1 2012, with the integrated graphics card enabled, nvidia
+# hyprland env parameters should be commented out and the machine rebooted.
 #
 # ~/.config/hypr/hyprland.conf
 # # NVIDIA environment variables
@@ -324,9 +337,12 @@ esac
 # # env = LIBVA_DRIVER_NAME,nvidia
 # # env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 #
-# Steam Don't Starve Together xwayland advanced configuration. Add the following configuration to DST's launch parameters.
+# Steam Don't Starve Together xwayland advanced configuration. Add the
+# following configuration to DST's launch parameters.
 # This also works for Oxygen don't included, Kingdom Newland and others as well.
 # SDL_VIDEODRIVER=x11 %command%
+#
+# The steam configuration is also updated to allow proper hyprland tiling.
 #
 # =============================================================================
 

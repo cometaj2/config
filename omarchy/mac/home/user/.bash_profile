@@ -14,6 +14,7 @@ alias cd..="cd .."
 alias ..="cd .."
 alias fuz="fzf"
 alias viz='vim $(fuz)'
+alias huz="history | fuz"
 alias buff="pbpaste"
 alias cir="circleci local execute 'Python 3.13'"
 
@@ -30,6 +31,7 @@ alias gup="git up"
 alias gif="git diff"
 alias gic="git add -A && git commit"
 alias gor="git push -u origin"
+alias giw="git worktree"
 
 # navigation aliases
 alias ..="cd .."
