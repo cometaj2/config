@@ -196,6 +196,21 @@ case "$KEYBOARD" in
         ;;
 esac
 
+KEYBOARD=$(cat /proc/bus/input/devices | grep Keyboard)
+case "$KEYBOARD" in
+    *'AT Translated Set 2 keyboard'*)
+        echo "Swapping alt and windows key"
+        STR="""input{\n
+        kb_options = altwin:swap_alt_win\n
+        repeat_rate = 50\n
+        repeat_delay = 200\n
+        }"""
+        echo -e $STR >> ~/.config/hypr/bindings.conf
+        ;;
+    *)
+        ;;
+esac
+
 # Mask ozone config which causes glitching and crashes when browsers are used
 sudo cp ./home/user/.config/brave-flags.conf ~/.config/brave-flags.conf
 sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
