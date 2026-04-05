@@ -196,7 +196,7 @@ case "$KEYBOARD" in
         ;;
 esac
 
-KEYBOARD=$(cat /proc/bus/input/devices | grep Keyboard)
+KEYBOARD=$(cat /proc/bus/input/devices | grep keyboard)
 case "$KEYBOARD" in
     *'AT Translated Set 2 keyboard'*)
         echo "Swapping alt and windows key"
