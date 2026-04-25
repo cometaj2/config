@@ -116,10 +116,10 @@ hai() {
 #source ~/.spacetraders
 
 # pyenv setup
-export TOX_DOCKER_GATEWAY=172.17.0.1
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-pyenv global 3.9 3.10 3.11 3.12 3.13 3.14
-eval "$(pyenv init --path)"     # prepends shims to PATH
-eval "$(pyenv init -)"          # enables shims and hooks
-pyenv shell system
+#export TOX_DOCKER_GATEWAY=172.17.0.1
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#pyenv global 3.9 3.10 3.11 3.12 3.13 3.14
+#eval "$(pyenv init --path)"     # prepends shims to PATH
+#eval "$(pyenv init -)"          # enables shims and hooks
+#pyenv shell system

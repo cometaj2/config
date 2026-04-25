@@ -1,8 +1,9 @@
 # =============================================================================
 # Pacmant
 # =============================================================================
+#
 # pacmant is a basic script to install packages that aren't in the pacman
-# mirrors but have otherwise been vetted and are trusted.
+# mirrors but have otherwise been vetted and are "trusted".
 #
 # pacmant builds packages from a PKGBUILD descriptions (like with the AUR)
 #
@@ -66,20 +67,20 @@ if [ ! -d ~/Documents/workspace/hcli/hcli_hag ]; then
     git clone https://github.com/cometaj2/hcli_hag.git ~/Documents/workspace/hcli/hcli_hag
 fi
 
-curl https://pyenv.run | bash
-yes n | pyenv install 3.9
-yes n | pyenv install 3.10
-yes n | pyenv install 3.11
-yes n | pyenv install 3.12
-yes n | pyenv install 3.13
-yes n | pyenv install 3.14
+#curl https://pyenv.run | bash
+#yes n | pyenv install 3.9
+#yes n | pyenv install 3.10
+#yes n | pyenv install 3.11
+#yes n | pyenv install 3.12
+#yes n | pyenv install 3.13
+#yes n | pyenv install 3.14
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-pyenv global 3.9 3.10 3.11 3.12 3.13 3.14
-eval "$(pyenv init --path)"     # prepends shims to PATH
-eval "$(pyenv init -)"          # enables shims and hooks
-pyenv shell system
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#pyenv global 3.9 3.10 3.11 3.12 3.13 3.14
+#eval "$(pyenv init --path)"     # prepends shims to PATH
+#eval "$(pyenv init -)"          # enables shims and hooks
+#pyenv shell system
 
 # =============================================================================
 # Vim
@@ -295,6 +296,7 @@ case "$GRAPHICS" in
         sudo cp ./home/user/.config/hypr/monitors.conf ~/.config/hypr/monitors.conf
 
         yes | sudo limine-mkinitcpio -P
+        yes | sudo limine-update
         echo "hint: reboot!"
         ;;
     *'Intel Corporation 3rd Gen Core processor Graphics Controller (rev 09)'*|*'NVIDIA Corporation GK107M [GeForce GT 650M Mac Edition] (rev a1)'*)
@@ -328,6 +330,7 @@ case "$GRAPHICS" in
         echo ""
 
         yes | sudo limine-mkinitcpio -P
+        yes | sudo limine-update
         echo "hint: reboot!"
         ;;
     *)

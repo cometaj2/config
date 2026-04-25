@@ -17,6 +17,9 @@
 #
 # export PACMANT_PACKAGES="$PWD/pkg"
 #
+# We also add pacman package ignore to help prevent broad yay updates against at least
+# some vetted packages installed via pacmant and yay.
+#
 # =============================================================================
 
 # Trap function to ensure popd is called on script exit or interruption
@@ -46,7 +49,11 @@ case "$INSTALLED" in
         GLOBIGNORE="../../tmp"
         cp -r ../../* .
         unset GLOBIGNORE
+
+        grep -q "^IgnorePkg" /etc/pacman.conf || sudo sed -i '/^\[options\]/a IgnorePkg =' /etc/pacman.conf; sudo sed -i '/^#\?IgnorePkg/ { /\<'"$1"'\>/! s/$/ '"$1"'/; s/^#// }' /etc/pacman.conf
+
         yes | makepkg -sic
+
         popd >/dev/null
         ;;
 esac
