@@ -258,6 +258,7 @@ sed -i 's/font-size:[[:space:]]*[0-9]\+[[:space:]]*px/font-size: 17px/g' ~/.conf
 #
 # Macbook Pro 2012 (requires gpu-switching) with:
 # Kepler series NVIDIA Corporation GK107M [GeForce GT 650M Mac Edition] (rev a1)
+# We install nvidia-prime to help enable offloading/switching to the discrete GPU
 #
 # =============================================================================
 
@@ -305,6 +306,7 @@ case "$GRAPHICS" in
         echo "Cleaning up after arch baseline..."
         echo ""
 
+        sudo pacman -Sy nvidia-prime
         yay -Rdd --noconfirm nvidia-dkms 2>/dev/null
         yay -Rdd --noconfirm lib32-nvidia-utils 2>/dev/null
         yes | yay -S --needed nvidia-470xx-dkms
@@ -361,6 +363,20 @@ esac
 # SDL_VIDEODRIVER=x11 %command%
 #
 # The steam configuration is also updated to allow proper hyprland tiling.
+#
+# Also, notably for Macbook Pro 2012 using NVIDIA GeForce 650M and Ivy Bridge iGPU
+#
+# https://www.reddit.com/r/linux_gaming/comments/v6kj6n/how_to_solve_this_problem_mesaintel_warning_ivy/
+#
+# PROTON_USE_WINED3D=1 MESA_LOADER_DRIVER_OVERRIDE=crocus %command% may be used additionally
+# to help with getting games working on older Ivy Bridge (Intel HD 4000)
+# hardware by forcing the modern Crocus OpenGL driver and reverting from 
+# broken Vulkan (DXVK) to Wine's older Direct3D-to-OpenGL translation (Wined3d)
+#
+# Also /etc/mkinitcpio.conf may be updated to specifically include nvidia modules
+# to try and help ensure the nvidia discrete card is recognized on boot.
+#
+# MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 #
 # =============================================================================
 
