@@ -306,13 +306,13 @@ case "$GRAPHICS" in
         echo "Cleaning up after arch baseline..."
         echo ""
 
-        sudo pacman -Sy nvidia-prime
         yay -Rdd --noconfirm nvidia-dkms 2>/dev/null
         yay -Rdd --noconfirm lib32-nvidia-utils 2>/dev/null
         yes | yay -S --needed nvidia-470xx-dkms
         yes | yay -S --needed lib32-nvidia-470xx-utils
         yes | sudo pacman -S --needed vulkan-tools
         yes | sudo pacman -S --needed mesa-utils
+        sudo pacman -Sy nvidia-prime
         sudo cp ./etc/modprobe.d/nvidia.conf /etc/modprobe.d/nvidia.conf
         sudo cp ./etc/modprobe.d/nvidia_drm.conf /etc/modprobe.d/nvidia_drm.conf
         echo "hint: glxinfo"
@@ -402,4 +402,20 @@ grep -qxF "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
 # sudo ufw allow 5353/udp
 # sudo ufw allow 6112:6119/udp
 # sudo ufw reload
+
+# =============================================================================
+# Mouse acceleration profile
+# =============================================================================
+# Acceleration profile curves are gnarly to configure with libinput but this
+# tool helps https://github.com/arnaav11/custom_accel_hyprland
+# Using the tool the following isn't perfect but is decent at low speed
+# (no movement jitter on click at low speed)
+#
+# This needs to be updated under ~/.config/hypr/input.conf
+#
+# 60 subdivisions
+# 10 DPI
+# Offset 0
+# accel_profile = custom 0.164 0.000 0.003 0.011 0.025 0.044 0.069 0.100 0.136 0.178 0.225 0.278 0.336 0.400 0.469 0.544 0.625 0.711 0.803 0.900 1.003 1.111 1.225 1.344 1.469 1.600 1.736 1.878 2.025 2.178 2.336 2.500 2.669 2.844 3.025 3.211 3.403 3.600 3.803 4.011 4.225 4.444 4.669 4.900 5.136 5.378 5.625 5.878 6.136 6.400 6.669 6.944 7.225 7.511 7.803 8.100 8.403 8.711 9.025 9.344 9.669 10.000
+
 
