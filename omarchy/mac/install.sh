@@ -331,6 +331,10 @@ case "$GRAPHICS" in
         inxi -Gxxxz
         echo ""
 
+        sudo systemctl enable nvidia-suspend
+        sudo systemctl enable nvidia-hibernate
+        sudo systemctl enable nvidia-resume
+
         yes | sudo limine-mkinitcpio -P
         yes | sudo limine-update
         echo "hint: reboot!"
