@@ -376,11 +376,16 @@ esac
 # to help with getting games working on older Ivy Bridge (Intel HD 4000)
 # hardware by forcing the modern Crocus OpenGL driver and reverting from 
 # broken Vulkan (DXVK) to Wine's older Direct3D-to-OpenGL translation (Wined3d)
-#
+# 
 # Also /etc/mkinitcpio.conf may be updated to specifically include nvidia modules
 # to try and help ensure the nvidia discrete card is recognized on boot.
 #
 # MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
+#
+# On iMac 2015 hardware:
+#
+# Bleak Sword DX:
+# PROTON_USE_WINED3D=1 PROTON_USE_WINE_DXGI=1 %command% -force-d3d11
 #
 # =============================================================================
 
