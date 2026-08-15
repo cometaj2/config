@@ -30,7 +30,7 @@ echo ""
 #
 # =============================================================================
 
-pacmant oldschool-pc-fonts
+#pacmant oldschool-pc-fonts
 sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 # =============================================================================
@@ -40,32 +40,32 @@ sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacrit
 #
 # =============================================================================
 
-python -m venv ~/.venv
-source ~/.venv/bin/activate
+#python -m venv ~/.venv
+#source ~/.venv/bin/activate
 
-pip install huckle
-pip install build
-pip install twine
-pip install pytest
-pip install gunicorn==25.0.1
-if [ ! -d ~/Documents/workspace ]; then
-    mkdir ~/Documents/workspace
-fi
-if [ ! -d ~/Documents/workspace/hcli ]; then
-    mkdir ~/Documents/workspace/hcli
-fi
-if [ ! -d ~/Documents/workspace/hcli/huckle ]; then
-    git clone https://github.com/cometaj2/huckle.git ~/Documents/workspace/hcli/huckle
-fi
-if [ ! -d ~/Documents/workspace/hcli/hcli_core ]; then
-    git clone https://github.com/cometaj2/hcli_core.git ~/Documents/workspace/hcli/hcli_core
-fi
-if [ ! -d ~/Documents/workspace/hcli/hcli_hc ]; then
-    git clone https://github.com/cometaj2/hcli_hc.git ~/Documents/workspace/hcli/hcli_hc
-fi
-if [ ! -d ~/Documents/workspace/hcli/hcli_hag ]; then
-    git clone https://github.com/cometaj2/hcli_hag.git ~/Documents/workspace/hcli/hcli_hag
-fi
+#pip install huckle
+#pip install build
+#pip install twine
+#pip install pytest
+#pip install gunicorn==25.0.1
+#if [ ! -d ~/Documents/workspace ]; then
+#    mkdir ~/Documents/workspace
+#fi
+#if [ ! -d ~/Documents/workspace/hcli ]; then
+#    mkdir ~/Documents/workspace/hcli
+#fi
+#if [ ! -d ~/Documents/workspace/hcli/huckle ]; then
+#    git clone https://github.com/cometaj2/huckle.git ~/Documents/workspace/hcli/huckle
+#fi
+#if [ ! -d ~/Documents/workspace/hcli/hcli_core ]; then
+#    git clone https://github.com/cometaj2/hcli_core.git ~/Documents/workspace/hcli/hcli_core
+#fi
+#if [ ! -d ~/Documents/workspace/hcli/hcli_hc ]; then
+#    git clone https://github.com/cometaj2/hcli_hc.git ~/Documents/workspace/hcli/hcli_hc
+#fi
+#if [ ! -d ~/Documents/workspace/hcli/hcli_hag ]; then
+#    git clone https://github.com/cometaj2/hcli_hag.git ~/Documents/workspace/hcli/hcli_hag
+#fi
 
 #curl https://pyenv.run | bash
 #yes n | pyenv install 3.9
@@ -132,24 +132,24 @@ source ~/.bash_profile
 #
 # =============================================================================
 
-#NETWORK=$(lspci -d 14e4::)
-#case "$NETWORK" in 
-#    *'Broadcom Inc.'*)
-#        echo ""
-#        echo "Found:"
-#        echo "$NETWORK"
-#        echo "Cleaning up after arch baseline..."
-#        echo ""
-#
-#        sudo rmmod b43 2>/dev/null
-#        sudo rmmod bcma 2>/dev/null
-#        yes | sudo pacman -S --needed broadcom-wl
-#        sudo modprobe wl
-#        echo "hint: iwctl device list"
-#        echo "hint: iwctl station wlan0 connect <network>"
-#        echo ""
-#        ;;
-#esac
+NETWORK=$(lspci -d 14e4::)
+case "$NETWORK" in 
+    *'Broadcom Inc.'*)
+        echo ""
+        echo "Found:"
+        echo "$NETWORK"
+        echo "Cleaning up after arch baseline..."
+        echo ""
+
+        sudo rmmod b43 2>/dev/null
+        sudo rmmod bcma 2>/dev/null
+        yes | sudo pacman -S --needed broadcom-wl
+        sudo modprobe wl
+        echo "hint: iwctl device list"
+        echo "hint: iwctl station wlan0 connect <network>"
+        echo ""
+        ;;
+esac
 
 # =============================================================================
 # Apps
@@ -180,18 +180,18 @@ sudo systemctl enable mbpfan
 sudo systemctl start mbpfan
 
 sudo cp ./home/user/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf
+sudo cp ./home/user/.config/hypr/bindings.lua ~/.config/hypr/bindings.lua
 
 yes | sudo pacman -S --needed usbutils
 KEYBOARD=$(lsusb | grep Keyboard)
 case "$KEYBOARD" in
     *'Primax Electronics, Ltd HP PR1101U / Primax PMX-KPR1101U Keyboard'*)
+        echo ""
+        echo "Found:"
+        echo "$KEYBOARD"
         echo "Swapping alt and windows key"
-        STR="""input{\n
-        kb_options = altwin:swap_alt_win\n
-        repeat_rate = 50\n
-        repeat_delay = 200\n
-        }"""
-        echo -e $STR >> ~/.config/hypr/bindings.conf
+        echo ""
+        sudo cp ./home/user/.config/hypr/input.lua ~/.config/hypr/input.lua
         ;;
     *)
         ;;
@@ -200,13 +200,12 @@ esac
 KEYBOARD=$(cat /proc/bus/input/devices | grep keyboard)
 case "$KEYBOARD" in
     *'AT Translated Set 2 keyboard'*)
+        echo ""
+        echo "Found:"
+        echo "$KEYBOARD"
         echo "Swapping alt and windows key"
-        STR="""input{\n
-        kb_options = altwin:swap_alt_win\n
-        repeat_rate = 50\n
-        repeat_delay = 200\n
-        }"""
-        echo -e $STR >> ~/.config/hypr/bindings.conf
+        echo ""
+        sudo cp ./home/user/.config/hypr/input.lua ~/.config/hypr/input.lua
         ;;
     *)
         ;;
@@ -229,7 +228,7 @@ sudo cp ./home/user/.config/mouseless/config.yaml ~/.config/mouseless/; sudo chm
 pacmant mouseless-bin
 
 # waybar font-size update to 28px
-sed -i 's/font-size:[[:space:]]*[0-9]\+[[:space:]]*px/font-size: 17px/g' ~/.config/waybar/style.css
+#sed -i 's/font-size:[[:space:]]*[0-9]\+[[:space:]]*px/font-size: 17px/g' ~/.config/waybar/style.css
 
 # =============================================================================
 # mkinitcpio
@@ -295,6 +294,7 @@ case "$GRAPHICS" in
         echo ""
 
         sudo cp ./home/user/.config/hypr/monitors.conf ~/.config/hypr/monitors.conf
+        sudo cp ./home/user/.config/hypr/monitors.lua ~/.config/hypr/monitors.lua
 
         yes | sudo limine-mkinitcpio -P
         yes | sudo limine-update

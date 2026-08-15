@@ -3,7 +3,9 @@
 class=$(hyprctl activewindow -j | jq -r .class)
 
 if [ "$class" = "Alacritty" ]; then
-    hyprctl dispatch sendshortcut "CTRL SHIFT, C, active"
+#    hyprctl dispatch sendshortcut "CTRL SHIFT, C, active"
+    hyprctl dispatch 'hl.dsp.send_shortcut({mods = "CTRL SHIFT", key = "C", window = "activewindow"})'
 else
-    hyprctl dispatch sendshortcut "CTRL, C, active"
+#    hyprctl dispatch sendshortcut "CTRL, C, active"
+    hyprctl dispatch 'hl.dsp.send_shortcut({mods = "CTRL", key = "C", window = "activewindow"})'
 fi
