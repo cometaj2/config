@@ -28,7 +28,16 @@ echo ""
 # =============================================================================
 # alacritty.toml configuration for oldschool 8x16 terminal font
 #
+# Waybar equivalent font-size update (now quickshell with omarchy command)
+#
+# Note that font size scaling actually impacts the whole system so this must
+# happen first so that other terminal bound font size changes and monitor
+# scaling can happen after to help yield the final result.
 # =============================================================================
+
+# waybar font-size update
+omarchy display text size 12
+sed -i 's/font-size:[[:space:]]*[0-9]\+[[:space:]]*px/font-size: 17px/g' ~/.config/waybar/style.css
 
 #pacmant oldschool-pc-fonts
 sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
@@ -40,32 +49,32 @@ sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacrit
 #
 # =============================================================================
 
-#python -m venv ~/.venv
-#source ~/.venv/bin/activate
+python -m venv ~/.venv
+source ~/.venv/bin/activate
 
-#pip install huckle
-#pip install build
-#pip install twine
-#pip install pytest
-#pip install gunicorn==25.0.1
-#if [ ! -d ~/Documents/workspace ]; then
-#    mkdir ~/Documents/workspace
-#fi
-#if [ ! -d ~/Documents/workspace/hcli ]; then
-#    mkdir ~/Documents/workspace/hcli
-#fi
-#if [ ! -d ~/Documents/workspace/hcli/huckle ]; then
-#    git clone https://github.com/cometaj2/huckle.git ~/Documents/workspace/hcli/huckle
-#fi
-#if [ ! -d ~/Documents/workspace/hcli/hcli_core ]; then
-#    git clone https://github.com/cometaj2/hcli_core.git ~/Documents/workspace/hcli/hcli_core
-#fi
-#if [ ! -d ~/Documents/workspace/hcli/hcli_hc ]; then
-#    git clone https://github.com/cometaj2/hcli_hc.git ~/Documents/workspace/hcli/hcli_hc
-#fi
-#if [ ! -d ~/Documents/workspace/hcli/hcli_hag ]; then
-#    git clone https://github.com/cometaj2/hcli_hag.git ~/Documents/workspace/hcli/hcli_hag
-#fi
+pip install huckle
+pip install build
+pip install twine
+pip install pytest
+pip install gunicorn==25.0.1
+if [ ! -d ~/Documents/workspace ]; then
+    mkdir ~/Documents/workspace
+fi
+if [ ! -d ~/Documents/workspace/hcli ]; then
+    mkdir ~/Documents/workspace/hcli
+fi
+if [ ! -d ~/Documents/workspace/hcli/huckle ]; then
+    git clone https://github.com/cometaj2/huckle.git ~/Documents/workspace/hcli/huckle
+fi
+if [ ! -d ~/Documents/workspace/hcli/hcli_core ]; then
+    git clone https://github.com/cometaj2/hcli_core.git ~/Documents/workspace/hcli/hcli_core
+fi
+if [ ! -d ~/Documents/workspace/hcli/hcli_hc ]; then
+    git clone https://github.com/cometaj2/hcli_hc.git ~/Documents/workspace/hcli/hcli_hc
+fi
+if [ ! -d ~/Documents/workspace/hcli/hcli_hag ]; then
+    git clone https://github.com/cometaj2/hcli_hag.git ~/Documents/workspace/hcli/hcli_hag
+fi
 
 #curl https://pyenv.run | bash
 #yes n | pyenv install 3.9
@@ -160,7 +169,6 @@ esac
 #
 # bindings.conf configuration is setup to cleanup key bindings and to allow remap
 #
-# waybar font-size update
 # =============================================================================
 
 yay -Qs lazygit | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
@@ -226,9 +234,6 @@ mkdir ~/.config/mouseless
 sudo usermod -aG input $USER
 sudo cp ./home/user/.config/mouseless/config.yaml ~/.config/mouseless/; sudo chmod 755 ~/.config/mouseless/config.yaml
 pacmant mouseless-bin
-
-# waybar font-size update to 28px
-#sed -i 's/font-size:[[:space:]]*[0-9]\+[[:space:]]*px/font-size: 17px/g' ~/.config/waybar/style.css
 
 # =============================================================================
 # mkinitcpio
