@@ -75,6 +75,9 @@ fi
 if [ ! -d ~/Documents/workspace/hcli/hcli_hag ]; then
     git clone https://github.com/cometaj2/hcli_hag.git ~/Documents/workspace/hcli/hcli_hag
 fi
+if [ ! -d ~/Documents/workspace/hcli/hcli_hai ]; then
+    git clone https://github.com/cometaj2/hcli_hai.git ~/Documents/workspace/hcli/hcli_hai
+fi
 
 #curl https://pyenv.run | bash
 #yes n | pyenv install 3.9

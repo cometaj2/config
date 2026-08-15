@@ -68,14 +68,12 @@ o.bind("SUPER + CTRL + Q", "Suspend", "systemctl suspend")
 
 --# Mac-style copy pasting, cut, undo (common binding for SUPER C and SUPER V but differentiated handling for the terminal vs everything else)
 --# suc and sup are super copy and super paster to accomodate seamless copy pasting between apps
---hl.bind("SUPER + A", hl.dsp.send_shortcut({ mods = "CTRL", key = "A", window = "activewindow" }))
---hl.bind("SUPER + X", hl.dsp.send_shortcut({ mods = "CTRL", key = "X", window = "activewindow" }))
---hl.bind("SUPER + Z", hl.dsp.send_shortcut({ mods = "CTRL", key = "Z", window = "activewindow" }))
---hl.bind("SUPER + F", hl.dsp.send_shortcut({ mods = "CTRL", key = "F", window = "activewindow" }))
+o.bind("SUPER + A", nil, hl.dsp.send_shortcut({ mods = "CTRL", key = "A", window = "activewindow" }))
+o.bind("SUPER + X", nil, hl.dsp.send_shortcut({ mods = "CTRL", key = "X", window = "activewindow" }))
+o.bind("SUPER + Z", nil, hl.dsp.send_shortcut({ mods = "CTRL", key = "Z", window = "activewindow" }))
+o.bind("SUPER + F", nil, hl.dsp.send_shortcut({ mods = "CTRL", key = "F", window = "activewindow" }))
 o.bind("SUPER + C", "Copy", "/usr/bin/suc")
 o.bind("SUPER + V", "Paste", "/usr/bin/sup")
-
-
 
 -- Swap active window with the one next to it with SUPER + SHIFT + arrow keys
 --bindd = SUPER SHIFT, H, Swap window to the left, swapwindow, l
