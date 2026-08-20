@@ -45,11 +45,11 @@ hl.unbind("SUPER + SLASH")
 
 o.bind("SUPER + RETURN", "Terminal", "alacritty")
 o.bind("SUPER + E", "File manager", "nautilus")
-o.bind("SUPER + N", "Browser", "brave")
+o.bind("SUPER + N", "Browser", "brave --new-window")
 o.bind("SUPER + SLASH", "Passwords", "keeperpasswordmanager")
-o.bind("SUPER + M", "Email", "brave https://mail.proton.me/u/0/inbox")
-o.bind("SUPER + Y", "YouTube", "brave https://youtube.com/")
-o.bind("SUPER + G", "Grok", "brave https://grok.com")
+o.bind("SUPER + M", "Email", "brave --new-window https://mail.proton.me/u/0/inbox")
+o.bind("SUPER + Y", "YouTube", "brave --new-window https://youtube.com/")
+o.bind("SUPER + G", "Grok", "brave --new-window https://grok.com")
 
 -- Mac-style keys remap
 o.bind("F1", nil, "brightnessctl set 10%-")
