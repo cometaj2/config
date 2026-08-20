@@ -41,6 +41,7 @@ INSTALLED=$(pacman -Q $1 2>/dev/null)
 case "$INSTALLED" in
     *"$1"*)
         echo -e "\033[33mwarning:\033[0m $INSTALLED is already installed -- skipping"
+        grep -q "^IgnorePkg" /etc/pacman.conf || sudo sed -i '/^\[options\]/a IgnorePkg =' /etc/pacman.conf; sudo sed -i '/^#\?IgnorePkg/ { /\<'"$1"'\>/! s/$/ '"$1"'/; s/^#// }' /etc/pacman.conf
         echo -e " there is nothing to do"
         ;;
     *)
