@@ -49,6 +49,7 @@ o.bind("SUPER + N", "Browser", "brave")
 o.bind("SUPER + SLASH", "Passwords", "keeperpasswordmanager")
 o.bind("SUPER + M", "Email", "brave https://mail.proton.me/u/0/inbox")
 o.bind("SUPER + Y", "YouTube", "brave https://youtube.com/")
+o.bind("SUPER + G", "Grok", "brave https://grok.com")
 
 -- Mac-style keys remap
 o.bind("F1", nil, "brightnessctl set 10%-")
