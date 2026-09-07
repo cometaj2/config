@@ -45,7 +45,7 @@ hl.unbind("SUPER + SLASH")
 
 o.bind("SUPER + RETURN", "Terminal", "alacritty")
 o.bind("SUPER + E", "File manager", "nautilus")
-o.bind("SUPER + N", "Browser", "brave --new-window")
+o.bind("SUPER + N", "Browser", "brave --new-window --hide-crash-restore-bubble")
 o.bind("SUPER + P", "Passwords", "keeperpasswordmanager")
 o.bind("SUPER + M", "Email", "brave --new-window https://mail.proton.me/u/0/inbox")
 o.bind("SUPER + Y", "YouTube", "brave --new-window https://youtube.com/")
