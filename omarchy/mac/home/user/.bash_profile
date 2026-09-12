@@ -1,6 +1,9 @@
 export LC_COLLATE=POSIX
 export LC_CTYPE=POSIX   # solves the backtick vs single quote issue in man pages against the en_US.UTF-8 locale
 
+# Disable terminal reset on ctrl + l
+bind -r '\C-l'
+
 # Miscellaneous but useful
 alias vi="vim"
 alias wl-paste="wl-paste 2>/dev/null"

@@ -47,9 +47,9 @@ o.bind("SUPER + RETURN", "Terminal", "alacritty")
 o.bind("SUPER + E", "File manager", "nautilus")
 o.bind("SUPER + N", "Browser", "brave --new-window --hide-crash-restore-bubble")
 o.bind("SUPER + P", "Passwords", "keeperpasswordmanager")
-o.bind("SUPER + M", "Email", "brave --new-window https://mail.proton.me/u/0/inbox")
-o.bind("SUPER + Y", "YouTube", "brave --new-window https://youtube.com/")
-o.bind("SUPER + G", "Grok", "brave --new-window https://grok.com")
+o.bind("SUPER + M", "Email", "brave --hide-crash-restore-bubble --new-window https://mail.proton.me/u/0/inbox")
+o.bind("SUPER + Y", "YouTube", "brave --new-window --hide-crash-restore-bubble https://youtube.com/")
+o.bind("SUPER + G", "Grok", "brave --new-window --hide-crash-restore-bubble https://grok.com")
 
 -- Mac-style keys remap
 o.bind("F1", nil, "brightnessctl set 10%-")

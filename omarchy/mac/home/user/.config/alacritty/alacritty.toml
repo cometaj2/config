@@ -26,8 +26,6 @@ blink_timeout = 0 # 0 disables timeout, making blinking persistent
 
 [keyboard]
 bindings = [
-    # Disable Ctrl+L clearing the screen
-    { key = "L", mods = "Control", action = "None" }
     #{ key = "Insert", mods = "Shift", action = "Paste" },
     #{ key = "Insert", mods = "Control", action = "Copy" },
     # Send Shift+Return as CSI-u so TUIs can distinguish it from Return without treating it as Alt+Return.
