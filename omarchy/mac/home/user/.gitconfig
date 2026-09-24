@@ -22,3 +22,6 @@
         smudge = git-lfs smudge -- %f
 [init]
         defaultBranch = master
+[diff]
+        colorMoved = no
+
