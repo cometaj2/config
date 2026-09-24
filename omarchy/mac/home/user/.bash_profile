@@ -21,6 +21,7 @@ alias huz="history | fuz"
 alias buff="pbpaste"
 alias cir="circleci local execute 'Python 3.13'"
 alias ra='pactl list sink-inputs short | awk '\''{print $1}'\'' | while read -r id; do pactl set-sink-input-volume "$id" 100%; done'
+alias ou='omarchy update'
 
 # git aliases
 #alias tac="sed -e 's|/|QQQMARKQQQ|g' | tr '\\' '/' | sed -e 's|QQQMARKQQQ|\\\|g' | perl -e 'print reverse<>'"
@@ -117,6 +118,7 @@ hai() {
   fi
 }
 
+source ~/.xai
 #source ~/.spacetraders
 
 # pyenv setup

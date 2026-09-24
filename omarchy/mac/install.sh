@@ -304,7 +304,7 @@ case "$GRAPHICS" in
         sudo cp ./home/user/.config/hypr/monitors.conf ~/.config/hypr/monitors.conf
         sudo cp ./home/user/.config/hypr/monitors.lua ~/.config/hypr/monitors.lua
 
-        yes | sudo limine-mkinitcpio -P
+        yes | sudo limine-mkinitcpio
         yes | sudo limine-update
         echo "hint: reboot!"
         ;;
@@ -343,7 +343,7 @@ case "$GRAPHICS" in
         sudo systemctl enable nvidia-hibernate
         sudo systemctl enable nvidia-resume
 
-        yes | sudo limine-mkinitcpio -P
+        yes | sudo limine-mkinitcpio
         yes | sudo limine-update
         echo "hint: reboot!"
         ;;
