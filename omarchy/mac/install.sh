@@ -184,6 +184,8 @@ yes | sudo pacman -S --needed pacman-contrib
 yes | sudo pacman -S --needed net-tools
 yes | yay -S --needed brave-bin
 pacmant keeper-password-manager
+pacmant flea
+pacmant flea-bin
 
 pacmant mbpfan
 sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
