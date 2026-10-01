@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Vim (Terminal)
+Comment=Open text files in Vim inside a terminal
+Exec=alacritty -e vim %F
+Icon=vim
+Terminal=false
+MimeType=text/x-python;text/plain;

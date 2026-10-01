@@ -230,6 +230,10 @@ sudo cp ./home/user/.config/chromium-flags.conf ~/.config/chromium-flags.conf
 sudo cp ./home/user/.local/share/omarchy/config/brave-flags.conf ~/.local/share/omarchy/config/brave-flags.conf
 sudo cp ./home/user/.local/share/omarchy/config/chromium-flags.conf ~/.local/share/omarchy/config/chromium-flags.conf
 
+# Default file open for python code
+sudo cp ./home/user/.local/share/applications/vim-terminal.desktop ~/.local/share/applications/vim-terminal.desktop
+xdg-mime default vim-terminal.desktop text/x-python
+
 # Copy paste adjustments to integrate with vim better and to improve security
 sudo cp ./usr/bin/suc /usr/bin/suc; sudo chmod 755 /usr/bin/suc
 sudo cp ./usr/bin/sup /usr/bin/sup; sudo chmod 755 /usr/bin/sup
