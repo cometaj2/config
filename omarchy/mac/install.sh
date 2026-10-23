@@ -39,6 +39,7 @@ echo ""
 omarchy display text size 12
 sed -i 's/font-size:[[:space:]]*[0-9]\+[[:space:]]*px/font-size: 17px/g' ~/.config/waybar/style.css
 
+yes | sudo pacman -S --needed alacritty
 pacmant oldschool-pc-fonts
 sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
