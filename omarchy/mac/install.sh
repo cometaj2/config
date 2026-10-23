@@ -39,7 +39,7 @@ echo ""
 omarchy display text size 12
 sed -i 's/font-size:[[:space:]]*[0-9]\+[[:space:]]*px/font-size: 17px/g' ~/.config/waybar/style.css
 
-#pacmant oldschool-pc-fonts
+pacmant oldschool-pc-fonts
 sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 # =============================================================================
@@ -51,6 +51,7 @@ sudo cp ./home/user/.config/alacritty/alacritty.toml ~/.config/alacritty/alacrit
 
 python -m venv ~/.venv
 source ~/.venv/bin/activate
+pip install --upgrade pip
 
 pip install huckle
 pip install build
