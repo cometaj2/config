@@ -110,13 +110,13 @@ _fzf_comprun() {
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:${HOME}/.cache/lm-studio/bin"
 
-hai() {
-  if [ "$1" = "ls" ]; then
-    huckle cli run hai ls "${@:2}" | cut -c-$COLUMNS
-  else
-    huckle cli run hai "$@"
-  fi
-}
+# hai() {
+#   if [ "$1" = "ls" ]; then
+#     huckle cli run hai ls "${@:2}" | cut -c-$COLUMNS
+#   else
+#     huckle cli run hai "$@"
+#   fi
+# }
 
 source ~/.xai
 source ~/.openai
