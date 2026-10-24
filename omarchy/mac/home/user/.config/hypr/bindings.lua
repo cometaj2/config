@@ -80,6 +80,9 @@ o.bind("SUPER + Z", nil, hl.dsp.send_shortcut({ mods = "CTRL", key = "Z", window
 o.bind("SUPER + C", "Copy", "/usr/bin/suc")
 o.bind("SUPER + V", "Paste", "/usr/bin/sup")
 
+o.bind("SUPER + SHIFT + H", nil, hl.dsp.window.swap({ direction = "left" }))
+o.bind("SUPER + SHIFT + L", nil, hl.dsp.window.swap({ direction = "right" }))
+
 -- Swap active window with the one next to it with SUPER + SHIFT + arrow keys
 --bindd = SUPER SHIFT, H, Swap window to the left, swapwindow, l
 --bindd = SUPER SHIFT, L, Swap window to the right, swapwindow, r
