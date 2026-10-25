@@ -454,12 +454,13 @@ grep -qxF "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
 # tool helps https://github.com/arnaav11/custom_accel_hyprland
 # web: https://opendisplay.app/
 #
-# sudo ufw allow from 192.168.1.0/24 to any port 9000 proto tcp
-# sudo ufw allow from 192.168.1.0/24 to any port 9001 proto udp
+# sudo ufw allow from 192.168.10.0/24 to any port 9000 proto tcp
+# sudo ufw allow from 192.168.10.0/24 to any port 9001 proto udp
 # sudo ufw status
 # sudo ufw reload
 #
-#
+# sudo ufw status numbered
+# sudo ufw delete <number>
 #
 # od-sender
 #
@@ -484,3 +485,11 @@ grep -qxF "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
 # git clone https://github.com/peetzweg/opendisplay
 # cd opendisplay/linux/packaging/arch/opendisplay-receiver
 # makepkg -si
+#
+#
+# Static address setting for ethernet connection
+#
+# ip a
+# sudo ip addr add 192.168.10.2/24 dev enp4s0f0
+# sudo ip addr del 192.168.10.1/24 dev enp4s0f0
+
