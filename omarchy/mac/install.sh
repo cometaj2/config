@@ -80,6 +80,9 @@ fi
 if [ ! -d ~/Documents/workspace/hcli/hcli_hai ]; then
     git clone https://github.com/cometaj2/hcli_hai.git ~/Documents/workspace/hcli/hcli_hai
 fi
+if [ ! -d ~/Documents/workspace/hcli/haillo ]; then
+    git clone https://github.com/cometaj2/haillo.git ~/Documents/workspace/hcli/haillo
+fi
 
 #curl https://pyenv.run | bash
 #yes n | pyenv install 3.9
