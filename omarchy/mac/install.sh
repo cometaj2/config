@@ -446,4 +446,41 @@ grep -qxF "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
 # Offset 0
 # accel_profile = custom 0.164 0.000 0.003 0.011 0.025 0.044 0.069 0.100 0.136 0.178 0.225 0.278 0.336 0.400 0.469 0.544 0.625 0.711 0.803 0.900 1.003 1.111 1.225 1.344 1.469 1.600 1.736 1.878 2.025 2.178 2.336 2.500 2.669 2.844 3.025 3.211 3.403 3.600 3.803 4.011 4.225 4.444 4.669 4.900 5.136 5.378 5.625 5.878 6.136 6.400 6.669 6.944 7.225 7.511 7.803 8.100 8.403 8.711 9.025 9.344 9.669 10.000
 
-
+# =============================================================================
+# OpenDisplay between Omarchy boxes
+# =============================================================================
+# Stock Omarchy uses ufw to allow port access and by default ports 9000 and 9001
+# aren't allowed. This is required for od-receiver to receive traffic from od-sender
+# tool helps https://github.com/arnaav11/custom_accel_hyprland
+# web: https://opendisplay.app/
+#
+# sudo ufw allow from 192.168.1.0/24 to any port 9000 proto tcp
+# sudo ufw allow from 192.168.1.0/24 to any port 9001 proto udp
+# sudo ufw status
+# sudo ufw reload
+#
+#
+#
+# od-sender
+#
+# Arch
+# sudo pacman -S --needed rust ffmpeg libpipewire pkgconf clang nasm
+# # Fedora (ffmpeg-free has no libx264, so the slower built-in OpenH264 encoder
+# # is used; RPM Fusion's ffmpeg-devel brings x264)
+# sudo dnf install rust cargo clang pkgconf-pkg-config nasm ffmpeg-free-devel pipewire-devel
+# # Debian / Ubuntu
+# sudo apt install rustup clang pkg-config nasm libavcodec-dev libavformat-dev \
+#   libavutil-dev libswscale-dev libpipewire-0.3-dev && rustup default stable
+# 
+# git clone https://github.com/peetzweg/opendisplay
+# cd opendisplay/linux
+# cargo build --release -p od-sender
+# ./target/release/od-sender doctor
+#
+#
+# od-receiver
+#
+# sudo pacman -S --needed base-devel git
+# git clone https://github.com/peetzweg/opendisplay
+# cd opendisplay/linux/packaging/arch/opendisplay-receiver
+# makepkg -si
