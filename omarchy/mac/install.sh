@@ -84,6 +84,8 @@ if [ ! -d ~/Documents/workspace/hcli/haillo ]; then
     git clone https://github.com/cometaj2/haillo.git ~/Documents/workspace/hcli/haillo
 fi
 
+pip install keepercommander
+
 #curl https://pyenv.run | bash
 #yes n | pyenv install 3.9
 #yes n | pyenv install 3.10
@@ -183,14 +185,14 @@ yay -Qs lazygit | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconf
 yay -Qs neovim | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
 yay -Qs lazydocker | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
 yay -Qs 1password | grep local | awk '{print $1 " " $3}' | xargs yay -Rnc --noconfirm 2>/dev/null
+omarchy pkg drop superwhisper-bin
 yes | sudo pacman -S --needed vim
 yes | sudo pacman -S --needed tar
 yes | sudo pacman -S --needed pacman-contrib
 yes | sudo pacman -S --needed net-tools
+yes | sudo pacman -S --needed flea
 yes | yay -S --needed brave-bin
 pacmant keeper-password-manager
-pacmant flea
-pacmant flea-bin
 
 pacmant mbpfan
 sudo cp ./etc/mbpfan.conf /etc/mbpfan.conf
@@ -454,6 +456,8 @@ grep -qxF "$LINE" "$FILE" || echo "$LINE" >> "$FILE"
 # tool helps https://github.com/arnaav11/custom_accel_hyprland
 # web: https://opendisplay.app/
 #
+# sudo ufw allow from 192.168.1.126/24 to any port 9000 proto tcp
+# sudo ufw allow from 192.168.1.126/24 to any port 9001 proto udp
 # sudo ufw allow from 192.168.10.0/24 to any port 9000 proto tcp
 # sudo ufw allow from 192.168.10.0/24 to any port 9001 proto udp
 # sudo ufw status
