@@ -1,4 +1,4 @@
-set -o vi
+#set -o vi
 
 export LC_COLLATE=POSIX
 #export LC_CTYPE=POSIX   # solves the backtick vs single quote issue in man pages against the en_US.UTF-8 locale

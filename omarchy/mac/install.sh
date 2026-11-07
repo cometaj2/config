@@ -37,7 +37,7 @@ echo ""
 
 # waybar font-size update
 omarchy display text size 12
-sed -i 's/font-size:[[:space:]]*[0-9]\+[[:space:]]*px/font-size: 17px/g' ~/.config/waybar/style.css
+# sed -i 's/font-size:[[:space:]]*[0-9]\+[[:space:]]*px/font-size: 17px/g' ~/.config/waybar/style.css
 
 yes | sudo pacman -S --needed alacritty
 pacmant oldschool-pc-fonts
@@ -151,24 +151,24 @@ source ~/.bash_profile
 #
 # =============================================================================
 
-NETWORK=$(lspci -d 14e4::)
-case "$NETWORK" in 
-    *'Broadcom Inc.'*)
-        echo ""
-        echo "Found:"
-        echo "$NETWORK"
-        echo "Cleaning up after arch baseline..."
-        echo ""
-
-        sudo rmmod b43 2>/dev/null
-        sudo rmmod bcma 2>/dev/null
-        yes | sudo pacman -S --needed broadcom-wl
-        sudo modprobe wl
-        echo "hint: iwctl device list"
-        echo "hint: iwctl station wlan0 connect <network>"
-        echo ""
-        ;;
-esac
+# NETWORK=$(lspci -d 14e4::)
+# case "$NETWORK" in 
+#     *'Broadcom Inc.'*)
+#         echo ""
+#         echo "Found:"
+#         echo "$NETWORK"
+#         echo "Cleaning up after arch baseline..."
+#         echo ""
+# 
+#         sudo rmmod b43 2>/dev/null
+#         sudo rmmod bcma 2>/dev/null
+#         yes | sudo pacman -S --needed broadcom-wl
+#         sudo modprobe wl
+#         echo "hint: iwctl device list"
+#         echo "hint: iwctl station wlan0 connect <network>"
+#         echo ""
+#         ;;
+# esac
 
 # =============================================================================
 # Apps
