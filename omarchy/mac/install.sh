@@ -87,8 +87,7 @@ fi
 pip install keepercommander
 
 #curl https://pyenv.run | bash
-#yes n | pyenv install 3.9
-#yes n | pyenv install 3.10
+#sudo pacman -S pyenv
 #yes n | pyenv install 3.11
 #yes n | pyenv install 3.12
 #yes n | pyenv install 3.13
@@ -96,7 +95,7 @@ pip install keepercommander
 
 #export PYENV_ROOT="$HOME/.pyenv"
 #export PATH="$PYENV_ROOT/bin:$PATH"
-#pyenv global 3.9 3.10 3.11 3.12 3.13 3.14
+#pyenv global 3.11 3.12 3.13 3.14
 #eval "$(pyenv init --path)"     # prepends shims to PATH
 #eval "$(pyenv init -)"          # enables shims and hooks
 #pyenv shell system
@@ -191,7 +190,7 @@ yes | sudo pacman -S --needed tar
 yes | sudo pacman -S --needed pacman-contrib
 yes | sudo pacman -S --needed net-tools
 yes | sudo pacman -S --needed flea
-yes | yay -S --needed brave-bin
+yes | sudo pacman -S --needed brave-bin
 pacmant keeper-password-manager
 
 pacmant mbpfan

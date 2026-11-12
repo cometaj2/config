@@ -148,3 +148,6 @@ if !empty($WAYLAND_DISPLAY)
 endif
 
 set encoding=utf-8
+
+" This increases the line memory limit per register to 1000 lines
+set viminfo='100,<1000,s100,h
